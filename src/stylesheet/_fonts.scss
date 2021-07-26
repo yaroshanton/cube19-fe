@@ -1,0 +1,38 @@
+@font-face {
+ font-family: "Gilroy";
+ font-style: normal;
+ font-weight: 700;
+ src: local("Gilroy Bold"),
+  url("../assets/fonts/Gilroy-Bold.woff") format("woff");
+}
+
+@font-face {
+ font-family: "Gilroy";
+ font-style: normal;
+ font-weight: 600;
+ src: local("Gilroy SemiBold"),
+  url("../assets/fonts/Gilroy-SemiBold.woff") format("woff");
+}
+
+@font-face {
+ font-family: "Lato";
+ font-style: normal;
+ font-weight: 700;
+ src: local("Lato Bold"), url("../assets/fonts/Lato-Bold.ttf") format("ttf");
+}
+
+@font-face {
+ font-family: "Lato";
+ font-style: normal;
+ font-weight: 400;
+ src: local("Lato Regular"),
+  url("../assets/fonts/Lato-Regular.ttf") format("ttf");
+}
+
+@font-face {
+ font-family: "Heebo";
+ font-style: normal;
+ font-weight: 400;
+ src: local("Heebo Regular"),
+  url("../assets/fonts/Heebo-Regular.ttf") format("ttf");
+}
