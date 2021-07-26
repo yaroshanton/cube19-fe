@@ -1,8 +1,15 @@
 import React from 'react';
+import Title from './components/Title'
+import HighestScorers from './components/HighestScorers'
+import LeadersTable from './components/LeadersTable'
 
 function App() {
   return (
-    <h1>Hi</h1>
+    <>
+    <Title/>
+    <HighestScorers/>
+    <LeadersTable/>
+    </>
   );
 }
 
