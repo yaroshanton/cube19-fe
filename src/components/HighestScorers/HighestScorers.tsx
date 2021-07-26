@@ -1,4 +1,5 @@
 import React from 'react';
+import './HighestScorers.scss'
 
 const HighestScorers = () => {
   return (

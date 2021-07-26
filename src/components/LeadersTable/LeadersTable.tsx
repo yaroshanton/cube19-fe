@@ -1,4 +1,5 @@
 import React from 'react';
+import './LeadersTable.scss'
 
 const LeadersTable = () => {
   return (
