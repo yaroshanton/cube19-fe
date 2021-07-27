@@ -1,5 +1,9 @@
 // export const leaders = (state: any) => state.leaders
-const leaders = (state: any) => state.leaders.map((leader:any) => leader.score ? leader.score : 0)
+const leaders = (state: any) => state.leaders.map((leader:any) => {
+   leader.score = !!leader.score ? leader.score : 0;
+   return leader;
+})
+  // const leadersArr = [...leaders];
 // console.log(leaders);
 
 // const leaders:any = useSelector(leadersSelectors.leaders)
