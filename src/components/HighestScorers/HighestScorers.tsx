@@ -8,7 +8,7 @@ import leadersSelectors from '../../redux/leaders/leadersSelectors'
 import './HighestScorers.scss'
 
 const HighestScorers = () => {
-  const leaders:any = useSelector(leadersSelectors.leaders)
+  const leaders:any = useSelector(leadersSelectors.leadersSelectors)
   console.log(leaders);
   
   // const leadersArr = [...leaders]
