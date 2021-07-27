@@ -1,5 +1,15 @@
+import { StoreType } from "../store";
+import { ILeader } from "./interfaces/leder.types";
+
 // export const leaders = (state: any) => state.leaders
-const leaders = (state: any) => state.leaders.map((leader:any) => leader.score ? leader.score : 0)
+const leadersSelectors = (state: StoreType): ILeader[] => state.leaders.map((leader: ILeader) => {
+  // leader.score = !!leader?.score ? leader.score : 0;
+  if (!leader.score) {
+    leader = { ...leader, ...{ score: 0 } };
+  }
+  return leader;
+})
+  // const leadersArr = [...leaders];
 // console.log(leaders);
 
 // const leaders:any = useSelector(leadersSelectors.leaders)
@@ -10,4 +20,4 @@ const leaders = (state: any) => state.leaders.map((leader:any) => leader.score ?
 // }).slice(0,4).reverse();
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default {leaders}
+export default {leadersSelectors};

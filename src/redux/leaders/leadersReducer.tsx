@@ -1,6 +1,9 @@
 import { createReducer } from '@reduxjs/toolkit';
+import { ILeader } from './interfaces/leder.types';
 import { fetchLeadersSuccess } from './leadersActions';
 
-export const leaders = createReducer([], {
-	[fetchLeadersSuccess.type]: (_, { payload }) => payload,
+const initState: ILeader[] = [];
+
+export const leaders = createReducer(initState, {
+  [fetchLeadersSuccess.type]: (_, { payload }) => payload,
 });

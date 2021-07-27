@@ -1,16 +1,21 @@
 import React from 'react';
 // import { v4 as uuidv4 } from 'uuid';
-// import { useSelector } from 'react-redux'
-import leaderImg from '../../images/bg-leadboard.png';
+import { useSelector } from 'react-redux'
+import leaderImg from "../../images/bg-leadboard.png"
 // import profileImg from "../../images/profile-img.png"
 
-// import leadersSelectors from '../../redux/leaders/leadersSelectors'
-import './HighestScorers.scss';
+import leadersSelectors from '../../redux/leaders/leadersSelectors'
+import './HighestScorers.scss'
 
 const HighestScorers = () => {
-	// const leaders:any = useSelector(leadersSelectors.leaders)
-	// console.log(leaders);
-
+  const leaders:any = useSelector(leadersSelectors.leadersSelectors)
+  console.log(leaders);
+  
+  // const leadersArr = [...leaders]
+  
+  // const slicedScoreLeaders = leadersArr.sort(function(a:any, b:any){
+  //   return a.score-b.score
+  // }).slice(0,4).reverse();
 	// const leadersArr = [...leaders]
 
 	// const slicedScoreLeaders = leadersArr.sort(function(a:any, b:any){
