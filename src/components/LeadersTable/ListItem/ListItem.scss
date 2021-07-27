@@ -1,0 +1,60 @@
+.list-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	&__place {
+		width: 22px;
+		height: 21px;
+		font-family: Gilroy;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 20px;
+		line-height: 21px;
+		color: #e0e0e0;
+	}
+
+	&__image {
+		width: 38px;
+		height: 38px;
+		border-radius: 10px;
+	}
+	&__score {
+		width: 44px;
+		height: 21px;
+		font-family: Gilroy;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 30px;
+		line-height: 21px;
+		color: #1b1d1a;
+		opacity: 0.91;
+	}
+	&__name {
+		width: 246px;
+		height: 23px;
+		font-family: Lato;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 21px;
+		color: #1a1c1d;
+	}
+	&__changes {
+		display: flex;
+		font-family: Heebo;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 22px;
+		color: #ffc658;
+
+		&::before {
+			content: url(./img/ArrowYellow.png);
+		}
+	}
+	&__edit {
+		width: 18px;
+		height: 18px;
+	}
+}

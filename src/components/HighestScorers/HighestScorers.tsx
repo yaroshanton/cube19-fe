@@ -16,28 +16,31 @@ const HighestScorers = () => {
   // const slicedScoreLeaders = leadersArr.sort(function(a:any, b:any){
   //   return a.score-b.score
   // }).slice(0,4).reverse();
+	// const leadersArr = [...leaders]
 
-  return (
-    <div className="wrapper">
-      <div className="highest-scores">
-      <h2>All time Highest Scorers</h2>
-      <ul className="highest-scores-list">
-        {/* {slicedScoreLeaders && slicedScoreLeaders.map((leader: any) => 
+	// const slicedScoreLeaders = leadersArr.sort(function(a:any, b:any){
+	//   return a.score-b.score
+	// }).slice(0,4).reverse();
+
+	return (
+		<div className="wrapper">
+			<div className="highest-scores">
+				<h2>All time Highest Scorers</h2>
+				<ul className="highest-scores-list">
+					{/* {slicedScoreLeaders && slicedScoreLeaders.map((leader: any) => 
           <li key={uuidv4()} className="highest-scores__item">
             <img src={profileImg} alt="leader" width="84" />
             <h3>{leader.name}</h3>
             <p>{leader.score ? leader.score : 0}</p>
           </li>
         )} */}
-      </ul>
-      </div>
-      <div className="highest-scores-image">
-        <img src={leaderImg} alt="leader-img-bg" />
-      </div>
-      <button type="button"></button>
-    </div>
-    
-  )
-}
+				</ul>
+			</div>
+			<div className="highest-scores-image">
+				<img src={leaderImg} alt="leader-img-bg" />
+			</div>
+		</div>
+	);
+};
 
 export default HighestScorers;
