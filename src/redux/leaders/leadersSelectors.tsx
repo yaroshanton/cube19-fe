@@ -1,3 +1,3 @@
 // import { createSelector } from 'reselect';
 
-// export const leaders = state => state.categories;
+export const leaders = () => console.log(2);
