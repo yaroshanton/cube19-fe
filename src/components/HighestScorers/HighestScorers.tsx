@@ -34,7 +34,6 @@ const HighestScorers = () => {
 			<div className="highest-scores-image">
 				<img src={leaderImg} alt="leader-img-bg" />
 			</div>
-			<button type="button"></button>
 		</div>
 	);
 };
