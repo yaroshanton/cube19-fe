@@ -12,6 +12,6 @@ const store = configureStore({
 
 // eslint-disable-next-line import/no-anonymous-default-export
 
-export type StoreType = ReturnType<typeof store.getState>
+export type StoreType = ReturnType<typeof store.getState>;
 
 export default store;
