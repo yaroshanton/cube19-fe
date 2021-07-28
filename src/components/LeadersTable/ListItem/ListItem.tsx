@@ -27,7 +27,7 @@ const ListItem = () => {
 		dispatch(modalEditLeadersOpenAction());
 		setOneLeader(leader);
 	};
-
+	// eslint-disable-next-line no-console
 	console.log(oneLeader);
 
 	return (

@@ -14,6 +14,6 @@ const sortedAllLeaders = (state: StoreType) => getAlLeaders(state).sort((a: any,
 
 const getTopScoreLeaders = (state: StoreType) => sortedAllLeaders(state).reverse().slice(0, 4);
 
-const getOtherScoreLeaders = (state: StoreType) => sortedAllLeaders(state).reverse().slice(4);
+const getOtherScoreLeaders = (state: StoreType) => sortedAllLeaders(state).reverse();
 
 export default { getAlLeaders, sortedAllLeaders, getTopScoreLeaders, getOtherScoreLeaders };
