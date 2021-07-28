@@ -2,12 +2,12 @@ import { configureStore } from '@reduxjs/toolkit';
 
 // Reducers
 import { leaders } from './leaders/leadersReducer';
-import { isModalLeadersOpen } from './modalLeaders/modalLeadersReducer';
+import { isModalEditLeadersOpen } from './modalEditLeaders/modalEditLeadersReducer';
 
 const store = configureStore({
 	reducer: {
 		leaders,
-		isModalLeadersOpen,
+		isModalEditLeadersOpen,
 	},
 	devTools: process.env.NODE_ENV === 'development',
 });

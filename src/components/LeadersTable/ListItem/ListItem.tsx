@@ -8,8 +8,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import ModalEditLeaders from '../../modalEditLeaders';
 
 import leadersSelectors from '../../../redux/leaders/leadersSelectors';
-import { modalLeadersOpenAction } from '../../../redux/modalLeaders/modalLeadersActions';
-import { modalLeadersOpenSelector } from '../../../redux/modalLeaders/modalLeadersSelectors';
+import { modalEditLeadersOpenAction } from '../../../redux/modalEditLeaders/modalEditLeadersActions';
+import { modalEditLeadersOpenSelector } from '../../../redux/modalEditLeaders/modalEditLeadersSelectors';
 
 import UserImage from './img/user.png';
 import PencilImage from './img/pencil.png';
@@ -21,10 +21,10 @@ const ListItem = () => {
 
 	const [oneLeader, setOneLeader] = useState({});
 	const leaders: any = useSelector(leadersSelectors.getOtherScoreLeaders);
-	const isModalEditLeadersOpen = useSelector(state => modalLeadersOpenSelector(state));
+	const isModalEditLeadersOpen = useSelector(state => modalEditLeadersOpenSelector(state));
 
 	const handleClick = (leader: any) => {
-		dispatch(modalLeadersOpenAction());
+		dispatch(modalEditLeadersOpenAction());
 		setOneLeader(leader);
 	};
 
