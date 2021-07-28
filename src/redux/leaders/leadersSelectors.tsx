@@ -1,24 +1,17 @@
 import { StoreType } from '../store';
 import { ILeader } from './interfaces/leder.types';
 
-// export const leaders = (state: any) => state.leaders
-const leadersSelectors = (state: StoreType): ILeader[] =>
+const getAlLeaders = (state: StoreType): ILeader[] =>
 	state.leaders.map((leader: ILeader) => {
-		// leader.score = !!leader?.score ? leader.score : 0;
 		if (!leader.score) {
+			// eslint-disable-next-line no-param-reassign
 			leader = { ...leader, ...{ score: 0 } };
 		}
 		return leader;
 	});
-// const leadersArr = [...leaders];
-// console.log(leaders);
 
-// const leaders:any = useSelector(leadersSelectors.leaders)
-// const leadersArr = [...leaders]
+const sortedAllLeaders = (state: StoreType) => getAlLeaders(state).sort((a: any, b: any) => a.score - b.score);
 
-// const slicedScoreLeaders = leaders.sort(function(a:any, b:any){
-//   return a.score-b.score
-// }).slice(0,4).reverse();
+const getTopScoreLeaders = (state: StoreType) => sortedAllLeaders(state).reverse().slice(0, 4);
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default { leadersSelectors };
+export default { getAlLeaders, sortedAllLeaders, getTopScoreLeaders };
