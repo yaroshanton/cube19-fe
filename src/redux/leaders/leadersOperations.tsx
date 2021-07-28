@@ -10,6 +10,7 @@ const fetchLeaders = () => async (dispatch: any) => {
 		dispatch({ type: [fetchLeadersSuccess.type], payload: data });
 	} catch (error) {
 		dispatch({ type: [fetchLeadersError.type], payload: error.message });
+		window.location.reload();
 	}
 };
 
