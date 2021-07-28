@@ -14,6 +14,7 @@
 	},
 	"plugins": ["react", "@typescript-eslint", "prettier"],
 	"rules": {
+		"no-param-reassign": 0,
 		"prettier/prettier": [
 			"error",
 			{
@@ -38,16 +39,22 @@
 		],
 		"import/no-unresolved": "off",
 		"react/prop-types": ["off"],
-		"jsx-a11y/label-has-associated-control": ["error", {
-			"required": {
-			"some": ["nesting", "id"]
-		}
-		}],
-		"jsx-a11y/label-has-for": ["error", {
-			"required": {
-				"some": ["nesting", "id"]
+		"jsx-a11y/label-has-associated-control": [
+			"error",
+			{
+				"required": {
+					"some": ["nesting", "id"]
+				}
 			}
-		}],
+		],
+		"jsx-a11y/label-has-for": [
+			"error",
+			{
+				"required": {
+					"some": ["nesting", "id"]
+				}
+			}
+		],
 		"react/react-in-jsx-scope": "off",
 		"no-undef": "off"
 	},
