@@ -20,7 +20,7 @@ const HighestScorers = () => {
 							<li key={uuidv4()} className="highest-scores__item">
 								<img src={profileImg} alt="leader" width="84" />
 								<h3>{leader.name}</h3>
-								<p>{leader.score ? leader.score : 0}</p>
+								<p>{leader.score}</p>
 							</li>
 						))}
 				</ul>
