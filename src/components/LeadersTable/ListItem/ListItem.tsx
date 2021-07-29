@@ -22,14 +22,15 @@ const ListItem = () => {
 	const [oneLeader, setOneLeader] = useState({});
 	const leaders: any = useSelector(leadersSelectors.getOtherScoreLeaders);
 	const isModalEditLeadersOpen = useSelector(state => modalEditLeadersOpenSelector(state));
+	const onToggleModal: any = () => dispatch(modalEditLeadersOpenAction());
 
 	const handleClick = (leader: any) => {
-		dispatch(modalEditLeadersOpenAction());
+		onToggleModal();
 		setOneLeader(leader);
 	};
+
 	// eslint-disable-next-line no-console
 	console.log(oneLeader);
-
 	return (
 		<div className="wrapper-list-item">
 			{leaders &&
@@ -48,7 +49,7 @@ const ListItem = () => {
 						/>
 					</li>
 				))}
-			{isModalEditLeadersOpen && <ModalEditLeaders />}
+			{isModalEditLeadersOpen && <ModalEditLeaders key={onToggleModal} />}
 		</div>
 	);
 };
