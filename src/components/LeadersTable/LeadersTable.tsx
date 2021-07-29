@@ -4,25 +4,15 @@
 import React from 'react';
 import './LeadersTable.scss';
 import { useDispatch, useSelector } from 'react-redux';
-<<<<<<< HEAD
-import { modalEditLeadersOpenAction } from '../../redux/modalEditLeaders/modalEditLeadersActions';
-import { modalEditLeadersOpenSelector } from '../../redux/modalEditLeaders/modalEditLeadersSelectors';
-=======
 import { modalAddLeadersOpenAction } from '../../redux/modalAddLeaders/modalAddLeadersActions';
 import { modalAddLeadersOpenSelector } from '../../redux/modalAddLeaders/modalAddLeadersSelectors';
->>>>>>> 3f076cc... [FIX] - modal
 import LeadersList from './LeadersList/LeadersList';
 import ModalAddLeaders from '../modalAddLeaders/modalAddLeaders';
 
 const LeadersTable = () => {
 	const dispatch: any = useDispatch();
-<<<<<<< HEAD
-	const modalState = () => dispatch(modalEditLeadersOpenAction());
-	const modalOpen = useSelector(state => modalEditLeadersOpenSelector(state));
-=======
 	const modalState = () => dispatch(modalAddLeadersOpenAction());
 	const modalOpen = useSelector(state => modalAddLeadersOpenSelector(state));
->>>>>>> 3f076cc... [FIX] - modal
 
 	return (
 		<div className="table">
