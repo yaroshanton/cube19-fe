@@ -52,6 +52,7 @@ const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 			dispatch({ type: [editLeadersAction.type], payload: editLeaders });
 			onToggleModal();
 		} else {
+			// eslint-disable-next-line no-alert
 			alert('You made no change!');
 		}
 	};

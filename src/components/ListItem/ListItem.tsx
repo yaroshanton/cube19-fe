@@ -4,16 +4,16 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
-import { ILeader } from '../../../redux/leaders/interfaces/leder.types';
+import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
-import ModalEditLeaders from '../../modalEditLeaders';
+import ModalEditLeaders from '../modalEditLeaders';
 
-import leadersSelectors from '../../../redux/leaders/leadersSelectors';
-import { modalEditLeadersOpenAction } from '../../../redux/modalEditLeaders/modalEditLeadersActions';
-import { modalEditLeadersOpenSelector } from '../../../redux/modalEditLeaders/modalEditLeadersSelectors';
+import leadersSelectors from '../../redux/leaders/leadersSelectors';
+import { modalEditLeadersOpenAction } from '../../redux/modalEditLeaders/modalEditLeadersActions';
+import { modalEditLeadersOpenSelector } from '../../redux/modalEditLeaders/modalEditLeadersSelectors';
 
-import UserImage from './img/user.png';
-import PencilImage from './img/pencil.png';
+import UserImage from '../../images/user.png';
+import PencilImage from '../../images/pencil.png';
 
 import './ListItem.scss';
 

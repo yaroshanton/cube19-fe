@@ -40,9 +40,8 @@ const ModalAddLeaders = () => {
 					<Formik
 						initialValues={{ name: '', score: '' }}
 						onSubmit={(values, { setSubmitting }) => {
-							const b = JSON.stringify(values, null, 2);
+							JSON.stringify(values, null, 2);
 							setSubmitting(false);
-							console.log(b);
 						}}
 					>
 						{({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (

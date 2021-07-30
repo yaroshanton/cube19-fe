@@ -6,7 +6,7 @@ import './LeadersTable.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { modalAddLeadersOpenAction } from '../../redux/modalAddLeaders/modalAddLeadersActions';
 import { modalAddLeadersOpenSelector } from '../../redux/modalAddLeaders/modalAddLeadersSelectors';
-import LeadersList from './LeadersList/LeadersList';
+import LeadersList from '../LeadersList';
 import ModalAddLeaders from '../modalAddLeaders/modalAddLeaders';
 
 const LeadersTable = () => {

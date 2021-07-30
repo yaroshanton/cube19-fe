@@ -1,5 +1,4 @@
 export interface ILeader {
-  name: string;
-  score?: number;
-  index?: number;
+	name: string;
+	score?: number;
 }
