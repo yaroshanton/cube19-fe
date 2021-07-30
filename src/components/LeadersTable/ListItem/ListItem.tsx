@@ -4,6 +4,7 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useSelector, useDispatch } from 'react-redux';
+import { ILeader } from '../../../redux/leaders/interfaces/leder.types';
 
 import ModalEditLeaders from '../../modalEditLeaders';
 
@@ -19,22 +20,20 @@ import './ListItem.scss';
 const ListItem = () => {
 	const dispatch: any = useDispatch();
 
-	const [oneLeader, setOneLeader] = useState({});
-	const leaders: any = useSelector(leadersSelectors.getOtherScoreLeaders);
+	const [oneLeader, setOneLeader] = useState<ILeader>({ name: '', score: 0 });
+	const leaders = useSelector(leadersSelectors.getOtherScoreLeaders);
 	const isModalEditLeadersOpen = useSelector(state => modalEditLeadersOpenSelector(state));
 	const onToggleModal: any = () => dispatch(modalEditLeadersOpenAction());
 
-	const handleClick = (leader: any) => {
+	const handleClick = (leader: ILeader) => {
 		onToggleModal();
-		setOneLeader(leader);
+		setOneLeader({ ...leader });
 	};
 
-	// eslint-disable-next-line no-console
-	console.log(oneLeader);
 	return (
 		<div className="wrapper-list-item">
 			{leaders &&
-				leaders.map((leader: any, index: number) => (
+				leaders.map((leader: ILeader, index: number) => (
 					<li key={uuidv4()} className="list-item">
 						<div className="list-item__place">{index + 1}st</div>
 						<img src={UserImage} alt="user" className="list-item__image" />
@@ -49,7 +48,7 @@ const ListItem = () => {
 						/>
 					</li>
 				))}
-			{isModalEditLeadersOpen && <ModalEditLeaders key={onToggleModal} />}
+			{isModalEditLeadersOpen && <ModalEditLeaders data={oneLeader} />}
 		</div>
 	);
 };
