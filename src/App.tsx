@@ -10,6 +10,7 @@ import LeadersTable from './components/LeadersTable';
 function App() {
 	const dispatch: any = useDispatch();
 	useEffect(() => dispatch(operations.fetchLeaders()), [dispatch]);
+
 	// const isModalEditLeadersOpen = useSelector(state => modalEditLeadersOpen(state));
 
 	return (

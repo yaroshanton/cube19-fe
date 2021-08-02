@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { fetchLeadersRequest, fetchLeadersSuccess, fetchLeadersError } from './leadersActions';
+import { Dispatch } from 'redux';
+import { ILeader } from './interfaces/leder.types';
+import { fetchLeadersRequest, fetchLeadersSuccess, fetchLeadersError, addLeadersAction } from './leadersActions';
 
 const fetchLeaders = () => async (dispatch: any) => {
 	dispatch(fetchLeadersRequest());
@@ -14,5 +16,9 @@ const fetchLeaders = () => async (dispatch: any) => {
 	}
 };
 
+const createLeader = (leader: ILeader) => (dispatch: Dispatch) => {
+	dispatch({ type: [addLeadersAction.type], payload: leader });
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { fetchLeaders };
+export default { fetchLeaders, createLeader };
