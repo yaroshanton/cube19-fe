@@ -5,3 +5,4 @@ export const fetchLeadersSuccess = createAction('leaders/fetchLeadersSuccess');
 export const fetchLeadersError = createAction('leaders/fetchLeadersError');
 
 export const editLeadersAction = createAction('leaders/EditLeaders');
+export const addLeadersAction = createAction('leaders/AddLeaders');
