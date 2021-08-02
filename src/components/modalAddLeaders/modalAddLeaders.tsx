@@ -9,6 +9,8 @@ import operations from '../../redux/leaders/leadersOperations';
 import { modalAddLeadersOpenAction } from '../../redux/modalAddLeaders/modalAddLeadersActions';
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
+const initFormik = { name: '', score: 0 };
+
 const ModalAddLeaders: React.FC = () => {
 	const dispatch: any = useDispatch();
 	const onToggleModal: any = () => dispatch(modalAddLeadersOpenAction());
@@ -46,9 +48,9 @@ const ModalAddLeaders: React.FC = () => {
 						x
 					</div>
 					<Formik
-						initialValues={{ name: '', score: 0 }}
-						onSubmit={values => {
-							handleSubmit(values);
+						initialValues={initFormik}
+						onSubmit={leader => {
+							handleSubmit(leader as ILeader);
 						}}
 					>
 						{({ values, handleChange, handleBlur, isSubmitting }) => (
