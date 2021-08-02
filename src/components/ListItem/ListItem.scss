@@ -60,6 +60,36 @@
 			padding-top: 1px;
 		}
 	}
+
+	&__up {
+		display: flex;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 22px;
+		color: #81c926;
+
+		&::before {
+			content: url(../../images/arrow-green-up.png);
+			padding-right: 10px;
+			padding-top: 1px;
+		}
+	}
+
+	&__down {
+		display: flex;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 22px;
+		color: #ff5858;
+
+		&::before {
+			content: url(../../images/arrow-red-down.png);
+			padding-right: 10px;
+			padding-top: 1px;
+		}
+	}
 	&__edit {
 		width: 18px;
 		height: 18px;
