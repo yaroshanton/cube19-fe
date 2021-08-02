@@ -1,5 +1,5 @@
 import React from 'react';
-import ListItem from '../ListItem/ListItem';
+import ListItem from '../ListItem';
 import './LeadersList.scss';
 
 const LeadersList = () => {

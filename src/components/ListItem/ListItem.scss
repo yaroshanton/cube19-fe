@@ -2,7 +2,10 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 20px;
+
+	&:not(:last-child) {
+		margin-bottom: 20px;
+	}
 
 	&__place {
 		width: 22px;
@@ -23,7 +26,7 @@
 	&__score {
 		width: 44px;
 		height: 21px;
-		font-family: Gilroy;
+		font-family: 'Gilroy';
 		font-style: normal;
 		font-weight: bold;
 		font-size: 30px;
@@ -32,9 +35,10 @@
 		opacity: 0.91;
 	}
 	&__name {
+		font-family: 'Lato', sans-serif;
 		width: 246px;
 		height: 23px;
-		font-family: Lato;
+
 		font-style: normal;
 		font-weight: normal;
 		font-size: 14px;
@@ -44,7 +48,6 @@
 	}
 	&__changes {
 		display: flex;
-		font-family: Heebo;
 		font-style: normal;
 		font-weight: normal;
 		font-size: 14px;
@@ -52,7 +55,9 @@
 		color: #ffc658;
 
 		&::before {
-			content: url(./img/ArrowYellow.png);
+			content: url(../../images/ArrowYellow.png);
+			padding-right: 10px;
+			padding-top: 1px;
 		}
 	}
 	&__edit {

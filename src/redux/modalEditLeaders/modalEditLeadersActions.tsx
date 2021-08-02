@@ -1,3 +1,3 @@
 import { createAction } from '@reduxjs/toolkit';
 
-export const modalEditLeadersOpenAction = createAction('modal/modalLeadersOpen');
+export const modalEditLeadersOpenAction = createAction('modal/isModalEditLeadersOpen');
