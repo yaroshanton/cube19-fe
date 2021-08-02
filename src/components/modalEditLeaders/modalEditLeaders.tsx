@@ -17,7 +17,7 @@ interface ModalProps {
 
 const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 	const dispatch: any = useDispatch();
-	const [editLeaders, seteditLeaders] = useState(data);
+	const [editLeaders, setEditLeaders] = useState(data);
 	const onToggleModal: any = () => dispatch(modalEditLeadersOpenAction());
 
 	// Закрытие модалки по клику Backdrop
@@ -35,12 +35,11 @@ const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 				window.removeEventListener('keydown', handleKeyDown);
 			}
 		};
-
 		window.addEventListener('keydown', handleKeyDown);
 	}, [onToggleModal]);
 
 	const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-		seteditLeaders(state => ({
+		setEditLeaders(state => ({
 			...state,
 			[e.target.name]: Number(e.target.value),
 		}));
@@ -48,6 +47,7 @@ const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
+
 		if (data.score !== editLeaders.score) {
 			dispatch({ type: [editLeadersAction.type], payload: editLeaders });
 			onToggleModal();
