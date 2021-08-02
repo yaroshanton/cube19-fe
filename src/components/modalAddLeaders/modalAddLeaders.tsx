@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
+
 import { Form, Formik } from 'formik';
+
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import './modalAddLeaders.scss';
@@ -8,7 +10,9 @@ import operations from '../../redux/leaders/leadersOperations';
 import { modalAddLeadersOpenAction } from '../../redux/modalAddLeaders/modalAddLeadersActions';
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
+
 const ModalAddLeaders: React.FC = () => {
+
 	const dispatch: any = useDispatch();
 	const onToggleModal: any = () => dispatch(modalAddLeadersOpenAction());
 
