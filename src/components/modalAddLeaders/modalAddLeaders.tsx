@@ -1,8 +1,13 @@
 import { Formik } from 'formik';
 import React from 'react';
+// import { useSelector } from 'react-redux';
+// import leadersSelectors from '../../redux/leaders/leadersSelectors';
+
 import './modalAddLeaders.scss';
 
 const ModalAddLeaders = () => {
+	// const leaders: any = useSelector(leadersSelectors.getOtherScoreLeaders);
+
 	return (
 		<div className="wrapper-modal">
 			<div className="modal">
@@ -10,9 +15,8 @@ const ModalAddLeaders = () => {
 				<Formik
 					initialValues={{ name: '', score: '' }}
 					onSubmit={(values, { setSubmitting }) => {
-						const b = JSON.stringify(values, null, 2);
+						console.log(JSON.stringify(values, null, 2));
 						setSubmitting(false);
-						console.log(b);
 					}}
 				>
 					{({ values, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
@@ -36,11 +40,9 @@ const ModalAddLeaders = () => {
 								onBlur={handleBlur}
 								value={values.score}
 							/>
-							<div className="modal__form__button">
-								<button type="submit" disabled={isSubmitting}>
-									Save
-								</button>
-							</div>
+							<button type="submit" disabled={isSubmitting} className="modal__form__button">
+								Save
+							</button>
 						</form>
 					)}
 				</Formik>
