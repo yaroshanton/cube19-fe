@@ -13,6 +13,6 @@ const sortedAllLeaders = (state: StoreType) =>
 			return leader;
 		});
 
-const getTopScoreLeaders = (state: StoreType) => sortedAllLeaders(state).reverse().slice(0, 4);
+const getTopScoreLeaders = (state: StoreType) => sortedAllLeaders(state).slice(0, 4);
 
 export default { getAlLeaders, sortedAllLeaders, getTopScoreLeaders };

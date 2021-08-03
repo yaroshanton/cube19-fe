@@ -4,7 +4,6 @@ import { Dispatch } from 'redux';
 import { ILeader } from './interfaces/leder.types';
 import { fetchLeadersRequest, fetchLeadersSuccess, fetchLeadersError, addLeadersAction } from './leadersActions';
 
-
 const fetchLeaders = () => async (dispatch: any) => {
 	dispatch(fetchLeadersRequest());
 

@@ -47,12 +47,7 @@ const ModalAddLeaders: React.FC = () => {
 					<div className="modal__close" onClick={onToggleModal}>
 						x
 					</div>
-					<Formik
-						initialValues={initFormik}
-						onSubmit={leader => {
-							handleSubmit(leader as ILeader);
-						}}
-					>
+					<Formik initialValues={initFormik} onSubmit={leader => handleSubmit(leader)}>
 						{({ values, handleChange, handleBlur, isSubmitting }) => (
 							<Form className="modal__form">
 								<h1 className="modal__form__text">Add user score</h1>
