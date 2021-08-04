@@ -15,6 +15,7 @@ const ModalAddLeaders: React.FC = () => {
 	const dispatch: any = useDispatch();
 	const onToggleModal: any = () => dispatch(modalAddLeadersOpenAction());
 
+	// TODO: Delete rus comment
 	// Закрытие модалки по клику Backdrop
 	const handleBackdropClick = (event: { currentTarget: any; target: any }): void => {
 		if (event.currentTarget === event.target) {
@@ -31,6 +32,8 @@ const ModalAddLeaders: React.FC = () => {
 			}
 		};
 
+		// TODO: Read about cleanup
+
 		window.addEventListener('keydown', handleKeyDown);
 	}, [onToggleModal]);
 
@@ -40,6 +43,7 @@ const ModalAddLeaders: React.FC = () => {
 	};
 
 	return (
+		// TODO: delete disabled eslint
 		// eslint-disable-next-line jsx-a11y/click-events-have-key-events
 		<div className="modal-backdrop" onClick={handleBackdropClick}>
 			<div className="wrapper-modal">

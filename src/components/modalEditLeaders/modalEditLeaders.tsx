@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useEffect, useState, FC } from 'react';
+// TODO: Delete react import
+import { useEffect, useState, FC, FormEvent } from 'react';
 import '../modalAddLeaders/modalAddLeaders';
 import { useDispatch } from 'react-redux';
 import './modalEditLeaders.scss';
@@ -28,6 +29,7 @@ const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 	};
 
 	// Закрытие модалки по Escape
+	// TODO: Create custom hook for this func
 	useEffect(() => {
 		const handleKeyDown = (e: { code: string }) => {
 			if (e.code === 'Escape') {
@@ -45,7 +47,7 @@ const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 		}));
 	};
 
-	const handleSubmit = (e: React.FormEvent) => {
+	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
 
 		if (data.score !== editLeaders.score) {

@@ -7,7 +7,7 @@ import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
 import ModalEditLeaders from '../modalEditLeaders';
 
-import leadersSelectors from '../../redux/leaders/leadersSelectors';
+import { sortedAllLeaders } from '../../redux/leaders/leadersSelectors';
 import { modalEditLeadersOpenAction } from '../../redux/modalEditLeaders/modalEditLeadersActions';
 import { modalEditLeadersOpenSelector } from '../../redux/modalEditLeaders/modalEditLeadersSelectors';
 
@@ -17,16 +17,14 @@ import PencilImage from '../../images/pencil.png';
 import './ListItem.scss';
 
 const ListItem = () => {
-	const dispatch = useDispatch();
-
+	// TODO: Check how ew can write code
 	const [oneLeader, setOneLeader] = useState<ILeader>({ name: '', score: 0, id: 0, position: 0 });
-	const leaders = useSelector(leadersSelectors.sortedAllLeaders);
-
+	const dispatch = useDispatch();
+	const leaders = useSelector(sortedAllLeaders);
 	const isModalEditLeadersOpen = useSelector(state => modalEditLeadersOpenSelector(state));
-	const onToggleModal = () => dispatch(modalEditLeadersOpenAction());
 
 	const handleClick = (leader: ILeader) => {
-		onToggleModal();
+		dispatch(modalEditLeadersOpenAction());
 		setOneLeader(leader);
 	};
 
@@ -50,6 +48,7 @@ const ListItem = () => {
 						</li>
 					);
 				})}
+
 			{isModalEditLeadersOpen && <ModalEditLeaders data={oneLeader} />}
 		</div>
 	);
