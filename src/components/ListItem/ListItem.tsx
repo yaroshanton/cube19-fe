@@ -30,6 +30,7 @@ const ListItem = () => {
 		onToggleModal();
 		setOneLeader(leader);
 		setActiveLeader(Number(leader.position));
+		// eslint-disable-next-line
 		console.log(activeLeader);
 	};
 
