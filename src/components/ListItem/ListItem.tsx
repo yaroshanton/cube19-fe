@@ -40,7 +40,6 @@ const ListItem = () => {
 							<img src={UserImage} alt="user" className="list-item__image" />
 							<div className="list-item__score">{leader.score}</div>
 							<div className="list-item__name ">{leader.name}</div>
-							{}
 							<div className="list-item__changes">No change</div>
 							<img
 								src={PencilImage}
