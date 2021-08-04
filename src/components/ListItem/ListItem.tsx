@@ -20,7 +20,6 @@ const ListItem = () => {
 	const dispatch = useDispatch();
 
 	const [oneLeader, setOneLeader] = useState<ILeader>({ name: '', score: 0, id: 0, position: 0 });
-	const [activeLeader, setActiveLeader] = useState(0);
 	const leaders = useSelector(leadersSelectors.sortedAllLeaders);
 
 	const isModalEditLeadersOpen = useSelector(state => modalEditLeadersOpenSelector(state));
@@ -29,9 +28,6 @@ const ListItem = () => {
 	const handleClick = (leader: ILeader) => {
 		onToggleModal();
 		setOneLeader(leader);
-		setActiveLeader(Number(leader.position));
-		// eslint-disable-next-line
-		console.log(activeLeader);
 	};
 
 	return (
@@ -44,7 +40,6 @@ const ListItem = () => {
 							<img src={UserImage} alt="user" className="list-item__image" />
 							<div className="list-item__score">{leader.score}</div>
 							<div className="list-item__name ">{leader.name}</div>
-							{}
 							<div className="list-item__changes">No change</div>
 							<img
 								src={PencilImage}
