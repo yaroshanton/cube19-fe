@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
-import leaderImg from '../../images/bg-leadboard.png';
-import profileImg from '../../images/profile-img.png';
+import leaderImg from '../../assets/images/bg-leadboard.png';
+import profileImg from '../../assets/images/profile-img.png';
 import { getTopScoreLeaders } from '../../redux/leaders/leadersSelectors';
 import './HighestScorers.scss';
 

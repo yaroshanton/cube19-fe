@@ -5,7 +5,7 @@ import { Form, Formik } from 'formik';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import './modalAddLeaders.scss';
-import operations from '../../redux/leaders/leadersOperations';
+import { createLeader } from '../../redux/leaders/leadersOperations';
 import { modalAddLeadersOpenAction } from '../../redux/modalAddLeaders/modalAddLeadersActions';
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
@@ -38,7 +38,7 @@ const ModalAddLeaders: React.FC = () => {
 	}, [onToggleModal]);
 
 	const handleSubmit = (leader: ILeader) => {
-		dispatch(operations.createLeader(leader));
+		dispatch(createLeader(leader));
 		onToggleModal();
 	};
 
