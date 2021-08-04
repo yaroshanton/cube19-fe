@@ -11,8 +11,8 @@ import { sortedAllLeaders } from '../../redux/leaders/leadersSelectors';
 import { modalEditLeadersOpenAction } from '../../redux/modalEditLeaders/modalEditLeadersActions';
 import { modalEditLeadersOpenSelector } from '../../redux/modalEditLeaders/modalEditLeadersSelectors';
 
-import UserImage from '../../images/user.png';
-import PencilImage from '../../images/pencil.png';
+import UserImage from '../../assets/images/user.png';
+import PencilImage from '../../assets/images/pencil.png';
 
 import './ListItem.scss';
 
