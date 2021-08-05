@@ -5,7 +5,7 @@ export const getLeadersOperations = (state: ILeader[], { payload }: { payload: I
 };
 
 export const createLeaderOperation = (state: ILeader[], { payload }: { payload: ILeader }) => {
-	return [...state, payload];
+	return [...state, { ...{ id: state.length }, ...payload }];
 };
 
 export const editLeaderOperation = (state: ILeader[], { payload }: { payload: ILeader }) => {

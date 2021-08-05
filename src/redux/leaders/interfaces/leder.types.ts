@@ -4,5 +4,3 @@ export interface ILeader {
 	id?: number;
 	position?: number;
 }
-
-// TODO: Create init interface for get

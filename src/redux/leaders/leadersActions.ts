@@ -1,20 +1,19 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // Types
 import { ILeader } from './interfaces/leder.types';
-import { fetchLeadersRequest, fetchLeadersSuccess, fetchLeadersError, addLeadersAction } from './leadersActions';
+import { fetchLeadersRequest, fetchLeadersSuccess, fetchLeadersError, addLeadersAction } from './actionTypes';
 
-// TODO: Rename file to actions
-// TODO: Delete tsx and create ts files
 export const fetchLeaders = () => async (dispatch: Dispatch) => {
 	dispatch(fetchLeadersRequest());
 
 	try {
-		// TODO: Create file with api links
 		const { data } = await axios.get('http://coding-test.cube19.io/frontend/v1/starting-state');
 
-		// TODO: delete any
 		const leader: ILeader = data.map((item: any, index: number) => {
 			return {
 				id: index,
@@ -25,12 +24,17 @@ export const fetchLeaders = () => async (dispatch: Dispatch) => {
 
 		dispatch({ type: [fetchLeadersSuccess.type], payload: leader });
 	} catch (error) {
-		// Delete alert. Connect toaster lib
-		// eslint-disable-next-line no-alert
-		alert(`Ошибка запроса, перезагружаю страницу!`);
+		toast.error('Request error, reloading the page!', {
+			position: 'top-center',
+			autoClose: 5000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+		});
+
 		dispatch({ type: [fetchLeadersError.type], payload: error.message });
-		// TODO: Delete this trash
-		window.location.reload();
 	}
 };
 

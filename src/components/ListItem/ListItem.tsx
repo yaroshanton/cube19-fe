@@ -1,7 +1,4 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
@@ -39,12 +36,15 @@ const ListItem = () => {
 							<div className="list-item__score">{leader.score}</div>
 							<div className="list-item__name ">{leader.name}</div>
 							<div className="list-item__changes">No change</div>
-							<img
-								src={PencilImage}
-								alt="pencil"
+							<div
 								className="list-item__edit cursor-pointer"
 								onClick={() => handleClick(leader)}
-							/>
+								onKeyDown={() => handleClick}
+								role="button"
+								tabIndex={0}
+							>
+								<img src={PencilImage} alt="pencil" />
+							</div>
 						</li>
 					);
 				})}
