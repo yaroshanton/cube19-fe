@@ -1,16 +1,16 @@
-/* eslint-disable jsx-a11y/interactive-supports-focus */
-/* eslint-disable react/jsx-no-comment-textnodes */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-
 import { useEffect, useState, FC, FormEvent } from 'react';
-import '../modalAddLeaders/modalAddLeaders';
 import { useDispatch } from 'react-redux';
 
-import './modalEditLeaders.scss';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
+
+import { editLeadersAction } from '../../redux/leaders/actionTypes';
 import { modalEditLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
-import { editLeadersAction } from '../../redux/leaders/leadersActions';
+import '../modalAddLeaders/modalAddLeaders';
+
+import './modalEditLeaders.scss';
 
 interface ModalProps {
 	data: ILeader;
@@ -27,8 +27,9 @@ const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 			onToggleModal();
 		}
 	};
+	// TODO: Create custom hook for this func modalEdit
 
-	// Closing a modalk on click Escape
+	// Closing the modal by Escape
 	useEffect(() => {
 		const handleKeyDown = (e: { code: string }) => {
 			if (e.code === 'Escape') {
@@ -53,17 +54,29 @@ const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 			dispatch({ type: [editLeadersAction.type], payload: editLeaders });
 			onToggleModal();
 		} else {
-			// eslint-disable-next-line no-alert
-			alert('You made no change!');
+			toast.dark('You made no change!', {
+				position: 'top-center',
+				autoClose: 5000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+			});
 		}
 	};
 
 	return (
-		// eslint-disable-next-line jsx-a11y/no-static-element-interactions
-		<div className="modal-backdrop" onClick={handleBackdropClick}>
+		<div role="button" tabIndex={0} className="modal-backdrop" onClick={handleBackdropClick}>
 			<div className="wrapper-modal" aria-hidden="true">
 				<div className="modal">
-					<div className="modal__close" role="button" onClick={onToggleModal}>
+					<div
+						role="button"
+						tabIndex={0}
+						className="modal__close"
+						onClick={onToggleModal}
+						onKeyDown={onToggleModal}
+					>
 						x
 					</div>
 					<form name="form" className="modal__form" onSubmit={handleSubmit}>

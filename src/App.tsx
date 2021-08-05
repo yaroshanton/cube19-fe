@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { ToastContainer } from 'react-toastify';
+
 // Actions
-import { fetchLeaders } from './redux/leaders/leadersOperations';
+import { fetchLeaders } from './redux/leaders/leadersActions';
 
 // Components
 import Container from './components/Container';
@@ -24,6 +26,7 @@ function App() {
 				<HighestScorers />
 				<LeadersTable />
 			</Container>
+			<ToastContainer />
 		</>
 	);
 }

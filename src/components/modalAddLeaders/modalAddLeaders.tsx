@@ -1,15 +1,13 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-
 import { Form, Formik } from 'formik';
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 
-import './modalAddLeaders.scss';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { createLeader } from '../../redux/leaders/leadersOperations';
 import { modalAddLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
 import { IInitialLeader } from '../../redux/leaders/interfaces/leder.types';
+
+import './modalAddLeaders.scss';
 
 const initFormik = { name: '', score: 0 };
 
@@ -24,7 +22,7 @@ const ModalAddLeaders: React.FC = () => {
 		}
 	};
 
-	// Закрытие модалки по Escape
+	// Closing the modal by Escape
 	useEffect(() => {
 		const handleKeyDown = (e: { code: string }) => {
 			if (e.code === 'Escape') {
@@ -32,8 +30,6 @@ const ModalAddLeaders: React.FC = () => {
 				window.removeEventListener('keydown', handleKeyDown);
 			}
 		};
-
-		// TODO: Read about cleanup
 
 		window.addEventListener('keydown', handleKeyDown);
 	}, [onToggleModal]);
@@ -44,11 +40,16 @@ const ModalAddLeaders: React.FC = () => {
 	};
 
 	return (
-		// eslint-disable-next-line jsx-a11y/click-events-have-key-events
-		<div className="modal-backdrop" onClick={handleBackdropClick}>
+		<div role="button" tabIndex={0} className="modal-backdrop" onClick={handleBackdropClick}>
 			<div className="wrapper-modal">
 				<div className="modal">
-					<div className="modal__close" onClick={onToggleModal}>
+					<div
+						role="button"
+						tabIndex={0}
+						className="modal__close"
+						onClick={onToggleModal}
+						onKeyDown={onToggleModal}
+					>
 						x
 					</div>
 					<Formik initialValues={initFormik} onSubmit={leader => handleSubmit(leader)}>
