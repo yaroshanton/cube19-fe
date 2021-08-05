@@ -4,20 +4,21 @@
 import { Form, Formik } from 'formik';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+
 import './modalAddLeaders.scss';
+
 import { createLeader } from '../../redux/leaders/leadersOperations';
-import { modalAddLeadersOpenAction } from '../../redux/modalAddLeaders/modalAddLeadersActions';
-import { ILeader } from '../../redux/leaders/interfaces/leder.types';
+import { modalAddLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
+import { IInitialLeader } from '../../redux/leaders/interfaces/leder.types';
 
 const initFormik = { name: '', score: 0 };
 
 const ModalAddLeaders: React.FC = () => {
-	const dispatch: any = useDispatch();
-	const onToggleModal: any = () => dispatch(modalAddLeadersOpenAction());
+	const dispatch = useDispatch();
+	const onToggleModal = () => dispatch(modalAddLeadersOpenAction());
 
-	// TODO: Delete rus comment
 	// Закрытие модалки по клику Backdrop
-	const handleBackdropClick = (event: { currentTarget: any; target: any }): void => {
+	const handleBackdropClick = (event: React.MouseEvent<HTMLInputElement>): void => {
 		if (event.currentTarget === event.target) {
 			onToggleModal();
 		}
@@ -37,13 +38,12 @@ const ModalAddLeaders: React.FC = () => {
 		window.addEventListener('keydown', handleKeyDown);
 	}, [onToggleModal]);
 
-	const handleSubmit = (leader: ILeader) => {
+	const handleSubmit = (leader: IInitialLeader) => {
 		dispatch(createLeader(leader));
 		onToggleModal();
 	};
 
 	return (
-		// TODO: delete disabled eslint
 		// eslint-disable-next-line jsx-a11y/click-events-have-key-events
 		<div className="modal-backdrop" onClick={handleBackdropClick}>
 			<div className="wrapper-modal">

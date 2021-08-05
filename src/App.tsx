@@ -10,13 +10,12 @@ import Title from './components/Title';
 import HighestScorers from './components/HighestScorers';
 import LeadersTable from './components/LeadersTable';
 
-// TODO: Divide imports all files
-// TODO: Delete all any types
-
 function App() {
-	const dispatch: any = useDispatch();
+	const dispatch = useDispatch();
 
-	useEffect(() => dispatch(fetchLeaders()), [dispatch]);
+	useEffect(() => {
+		dispatch(fetchLeaders());
+	}, [dispatch]);
 
 	return (
 		<>

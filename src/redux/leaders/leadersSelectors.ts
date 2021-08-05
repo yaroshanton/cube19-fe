@@ -4,11 +4,11 @@ import { ILeader } from './interfaces/leder.types';
 // TODO: Check return state.leaders
 export const getAlLeaders = (state: StoreType): ILeader[] => [...state.leaders];
 
-export const sortedAllLeaders = (state: StoreType) =>
+export const sortedAllLeaders = (state: StoreType): ILeader[] =>
 	getAlLeaders(state)
-		.sort((a: any, b: any) => b.score - a.score)
-		.map((leader: ILeader, index: number) => {
-			leader = { ...leader, ...{ position: index + 1 } };
+		.sort((a, b) => b.score - a.score)
+		.map((leader, index: number) => {
+			leader = { ...leader, ...{ position: index + 1, change: 0 } };
 
 			return leader;
 		});

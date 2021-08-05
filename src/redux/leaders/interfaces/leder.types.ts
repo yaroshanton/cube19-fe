@@ -1,8 +1,12 @@
-export interface ILeader {
+export interface IInitialLeader {
 	name: string;
-	score?: number;
-	id?: number;
-	position?: number;
+	score: number;
 }
 
-// TODO: Create init interface for get
+export interface ILeader {
+	name: string;
+	score: number;
+	id: number;
+	position: number;
+	change: number;
+}

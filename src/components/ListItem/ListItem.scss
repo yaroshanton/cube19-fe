@@ -1,3 +1,5 @@
+@import '../../stylesheet/shared.scss';
+
 .list-item {
 	display: flex;
 	justify-content: space-between;
@@ -10,7 +12,7 @@
 	&__place {
 		width: 22px;
 		height: 21px;
-		font-family: Gilroy;
+		font-family: $font-family-gilroy;
 		font-style: normal;
 		font-weight: bold;
 		font-size: 20px;
@@ -26,7 +28,7 @@
 	&__score {
 		width: 44px;
 		height: 21px;
-		font-family: 'Gilroy';
+		font-family: $font-family-gilroy;
 		font-style: normal;
 		font-weight: bold;
 		font-size: 30px;
@@ -35,7 +37,7 @@
 		opacity: 0.91;
 	}
 	&__name {
-		font-family: 'Lato', sans-serif;
+		font-family: $font-family-lato;
 		width: 246px;
 		height: 23px;
 

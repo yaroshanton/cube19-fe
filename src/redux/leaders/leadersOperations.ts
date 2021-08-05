@@ -1,21 +1,18 @@
 import axios from 'axios';
 import { Dispatch } from 'redux';
+import { baseUrl } from './api/api-links';
 
 // Types
-import { ILeader } from './interfaces/leder.types';
+import { IInitialLeader } from './interfaces/leder.types';
 import { fetchLeadersRequest, fetchLeadersSuccess, fetchLeadersError, addLeadersAction } from './leadersActions';
 
-// TODO: Rename file to actions
-// TODO: Delete tsx and create ts files
 export const fetchLeaders = () => async (dispatch: Dispatch) => {
 	dispatch(fetchLeadersRequest());
 
 	try {
-		// TODO: Create file with api links
-		const { data } = await axios.get('http://coding-test.cube19.io/frontend/v1/starting-state');
+		const { data } = await axios.get(`${baseUrl}`);
 
-		// TODO: delete any
-		const leader: ILeader = data.map((item: any, index: number) => {
+		const leader = data.map((item: IInitialLeader, index: number) => {
 			return {
 				id: index,
 				name: item.name,
@@ -25,15 +22,14 @@ export const fetchLeaders = () => async (dispatch: Dispatch) => {
 
 		dispatch({ type: [fetchLeadersSuccess.type], payload: leader });
 	} catch (error) {
-		// Delete alert. Connect toaster lib
+		// Delete alert.
 		// eslint-disable-next-line no-alert
 		alert(`Ошибка запроса, перезагружаю страницу!`);
 		dispatch({ type: [fetchLeadersError.type], payload: error.message });
-		// TODO: Delete this trash
 		window.location.reload();
 	}
 };
 
-export const createLeader = (leader: ILeader) => (dispatch: Dispatch) => {
+export const createLeader = (leader: IInitialLeader) => (dispatch: Dispatch) => {
 	dispatch({ type: [addLeadersAction.type], payload: leader });
 };

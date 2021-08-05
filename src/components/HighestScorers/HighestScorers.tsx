@@ -1,11 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
-import leaderImg from '../../assets/images/bg-leadboard.png';
-import profileImg from '../../assets/images/profile-img.png';
+import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 import { getTopScoreLeaders } from '../../redux/leaders/leadersSelectors';
+
 import './HighestScorers.scss';
+import profileImg from '../../assets/images/profile-img.png';
+import leaderImg from '../../assets/images/bg-leadboard.png';
 
 const HighestScorers = () => {
 	const leaders: ILeader[] = useSelector(getTopScoreLeaders);
@@ -18,7 +19,6 @@ const HighestScorers = () => {
 					{leaders &&
 						leaders.map(leader => (
 							<li key={leader.id} className="highest-scores__item">
-								{/* TODO: Delete inline styles */}
 								<img src={profileImg} alt="leader" width="84" />
 								<h3>{leader.name}</h3>
 								<p>{leader.score}</p>

@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-// TODO: Delete react import
+
 import { useEffect, useState, FC, FormEvent } from 'react';
 import '../modalAddLeaders/modalAddLeaders';
 import { useDispatch } from 'react-redux';
+
 import './modalEditLeaders.scss';
 
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
-
-import { modalEditLeadersOpenAction } from '../../redux/modalEditLeaders/modalEditLeadersActions';
+import { modalEditLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
 import { editLeadersAction } from '../../redux/leaders/leadersActions';
 
 interface ModalProps {
@@ -17,19 +17,18 @@ interface ModalProps {
 }
 
 const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
-	const dispatch: any = useDispatch();
+	const dispatch = useDispatch();
 	const [editLeaders, setEditLeaders] = useState(data);
-	const onToggleModal: any = () => dispatch(modalEditLeadersOpenAction());
+	const onToggleModal = () => dispatch(modalEditLeadersOpenAction());
 
-	// Закрытие модалки по клику Backdrop
-	const handleBackdropClick = (event: { currentTarget: any; target: any }): void => {
+	// Closing a modalk on click Backdrop
+	const handleBackdropClick = (event: React.MouseEvent<HTMLInputElement>): void => {
 		if (event.currentTarget === event.target) {
 			onToggleModal();
 		}
 	};
 
-	// Закрытие модалки по Escape
-	// TODO: Create custom hook for this func
+	// Closing a modalk on click Escape
 	useEffect(() => {
 		const handleKeyDown = (e: { code: string }) => {
 			if (e.code === 'Escape') {
