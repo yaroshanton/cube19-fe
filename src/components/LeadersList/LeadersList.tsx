@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-=======
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
->>>>>>> create-logic-edit-leader
 import ListItem from '../ListItem';
 import './LeadersList.scss';
 
@@ -17,8 +14,6 @@ import { modalEditLeadersOpenAction } from '../../redux/modalLeaders/modalLeader
 import { modalEditLeadersOpenSelector } from '../../redux/modalLeaders/modalLeadersSelectors';
 
 const LeadersList = () => {
-<<<<<<< HEAD
-=======
 	// TODO: Check how ew can write code
 	const [oneLeader, setOneLeader] = useState<ILeader>({ name: '', score: 0, id: 0, position: 0, change: 0 });
 	const dispatch = useDispatch();
@@ -45,7 +40,6 @@ const LeadersList = () => {
 
 	defendenceLeaders(leaders, oldLeaders);
 
->>>>>>> create-logic-edit-leader
 	return (
 		<div className="leader-list">
 			<ListItem leaders={leaders} handleClick={handleClick} />

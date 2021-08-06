@@ -10,7 +10,7 @@ import { IInitialLeader } from '../../redux/leaders/interfaces/leder.types';
 
 import './modalAddLeaders.scss';
 
-const initFormik = { name: '', score: 0 };
+const initFormik = { name: '', score: Number('_') };
 
 const ModalAddLeaders: React.FC = () => {
 	const dispatch = useDispatch();

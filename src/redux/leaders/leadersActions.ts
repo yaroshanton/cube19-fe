@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 // Types
-import { ILeader } from './interfaces/leder.types';
+import { ILeader, IInitialLeader } from './interfaces/leder.types';
 import { fetchLeadersRequest, fetchLeadersSuccess, fetchLeadersError, addLeadersAction } from './actionTypes';
 
 export const fetchLeaders = () => async (dispatch: Dispatch) => {
@@ -38,6 +38,6 @@ export const fetchLeaders = () => async (dispatch: Dispatch) => {
 	}
 };
 
-export const createLeader = (leader: ILeader) => (dispatch: Dispatch) => {
+export const createLeader = (leader: IInitialLeader) => (dispatch: Dispatch) => {
 	dispatch({ type: [addLeadersAction.type], payload: leader });
 };

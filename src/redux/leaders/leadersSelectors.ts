@@ -5,7 +5,7 @@ import { ILeader } from './interfaces/leder.types';
 export const getAllLeaders = (state: StoreType): ILeader[] => [...state.leaders];
 
 export const sortedAllLeaders = (state: StoreType): ILeader[] =>
-	getAlLeaders(state)
+	getAllLeaders(state)
 		.sort((a, b) => b.score - a.score)
 		.map((leader, index: number) => {
 			leader = { ...leader, ...{ position: index + 1, change: 0 } };
