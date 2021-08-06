@@ -20,7 +20,7 @@ const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 	const onToggleModal = () => dispatch(modalEditLeadersOpenAction());
 
 	// Closing a modalk on click Backdrop
-	const handleBackdropClick = (event: { currentTarget: any; target: any }): void => {
+	const handleBackdropClick = (event: React.FormEvent<EventTarget>): void => {
 		if (event.currentTarget === event.target) {
 			onToggleModal();
 		}
@@ -54,7 +54,7 @@ const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 		} else {
 			toast.dark('You made no change!', {
 				position: 'top-center',
-				autoClose: 5000,
+				autoClose: 2000,
 				hideProgressBar: false,
 				closeOnClick: true,
 				pauseOnHover: true,
