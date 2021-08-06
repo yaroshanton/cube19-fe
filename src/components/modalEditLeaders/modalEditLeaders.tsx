@@ -49,13 +49,14 @@ const ModalEditLeaders: FC<ModalProps> = ({ data, handleAddOldLeaders }: ModalPr
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
 
-		handleAddOldLeaders();
-
 		if (data.score !== editLeaders.score) {
 			dispatch({ type: [editLeadersAction.type], payload: editLeaders });
 			onToggleModal();
+			handleAddOldLeaders();
 		} else {
-			toast.dark('You made no change!');
+			toast.error('🦄 You made no change!', {
+				autoClose: 2000,
+			});
 		}
 	};
 
@@ -92,8 +93,7 @@ const ModalEditLeaders: FC<ModalProps> = ({ data, handleAddOldLeaders }: ModalPr
 							type="number"
 							name="score"
 							onChange={handleInput}
-							placeholder="
-              Score:"
+							placeholder="Score:"
 						/>
 						<button type="submit" className="modal__form__button">
 							Save

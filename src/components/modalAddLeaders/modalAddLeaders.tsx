@@ -2,6 +2,7 @@ import { Form, Formik } from 'formik';
 
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 import './modalAddLeaders.scss';
 
@@ -40,9 +41,15 @@ const ModalAddLeaders = ({ handleAddOldLeaders }: ModalAddLeadersProps) => {
 	}, [onToggleModal]);
 
 	const handleSubmit = (leader: IInitialLeader) => {
-		dispatch(createLeader(leader));
-		onToggleModal();
-		handleAddOldLeaders();
+		if (leader.name !== '' && leader.score !== Number('_')) {
+			dispatch(createLeader(leader));
+			onToggleModal();
+			handleAddOldLeaders();
+		} else {
+			toast.error('🦄 Enter your name and score!', {
+				autoClose: 2000,
+			});
+		}
 	};
 
 	return (
@@ -65,7 +72,7 @@ const ModalAddLeaders = ({ handleAddOldLeaders }: ModalAddLeadersProps) => {
 						x
 					</div>
 					<Formik initialValues={initFormik} onSubmit={leader => handleSubmit(leader)}>
-						{({ values, handleChange, handleBlur, isSubmitting }) => (
+						{({ values, handleChange, handleBlur }) => (
 							<Form className="modal__form">
 								<h1 className="modal__form__text">Add user score</h1>
 								<input
@@ -86,7 +93,7 @@ const ModalAddLeaders = ({ handleAddOldLeaders }: ModalAddLeadersProps) => {
 									onBlur={handleBlur}
 									value={values.score}
 								/>
-								<button type="submit" disabled={isSubmitting} className="modal__form__button">
+								<button type="submit" className="modal__form__button">
 									Save
 								</button>
 							</Form>

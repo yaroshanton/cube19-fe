@@ -2,6 +2,8 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 
 import { toast } from 'react-toastify';
+import { baseUrl } from './api/api-links';
+
 import 'react-toastify/dist/ReactToastify.css';
 
 // Types
@@ -12,7 +14,7 @@ export const fetchLeaders = () => async (dispatch: Dispatch) => {
 	dispatch(fetchLeadersRequest());
 
 	try {
-		const { data } = await axios.get('http://coding-test.cube19.io/frontend/v1/starting-state');
+		const { data } = await axios.get(`${baseUrl}`);
 
 		const leader = data.map((item: ILeader, index: number) => {
 			return {
@@ -24,7 +26,9 @@ export const fetchLeaders = () => async (dispatch: Dispatch) => {
 
 		dispatch({ type: [fetchLeadersSuccess.type], payload: leader });
 	} catch (error) {
-		toast.error('Request error, reloading the page!');
+		toast.error('🦄 Request error, reloading the page!', {
+			autoClose: 2000,
+		});
 
 		dispatch({ type: [fetchLeadersError.type], payload: error.message });
 	}
