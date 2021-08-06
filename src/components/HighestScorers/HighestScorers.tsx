@@ -19,7 +19,7 @@ const HighestScorers = () => {
 					{leaders &&
 						leaders.map(leader => (
 							<li key={leader.id} className="highest-scores__item">
-								<img src={profileImg} alt="leader" width="84" />
+								<img src={profileImg} alt="leader" className="highest-scores__item__img" />
 								<h3>{leader.name}</h3>
 								<p>{leader.score}</p>
 							</li>

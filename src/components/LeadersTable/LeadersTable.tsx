@@ -21,7 +21,13 @@ const LeadersTable = () => {
 		<div className="table">
 			<div className="table-header">
 				<div className="table-header__text">Leaders table for this period</div>
-				<div className="table-header__button cursor-pointer" role="button" tabIndex={0} onClick={modalState}>
+				<div
+					className="table-header__button cursor-pointer"
+					role="button"
+					tabIndex={0}
+					onClick={modalState}
+					onKeyDown={modalState}
+				>
 					+ Add new score
 				</div>
 			</div>

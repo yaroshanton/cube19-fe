@@ -1,6 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-
 import UserImage from '../../assets/images/user.png';
 import PencilImage from '../../assets/images/pencil.png';
 import './ListItem.scss';
@@ -26,12 +23,15 @@ const ListItem = (props: TListItemProps) => {
 						<div className="list-item__changes">
 							{leader.change === 0 ? 'No Change' : `${leader.change}point`}
 						</div>
-						<img
-							src={PencilImage}
-							alt="pencil"
+						<div
 							className="list-item__edit cursor-pointer"
 							onClick={() => handleClick(leader)}
-						/>
+							onKeyDown={() => handleClick}
+							role="button"
+							tabIndex={0}
+						>
+							<img src={PencilImage} alt="pencil" />
+						</div>
 					</li>
 				);
 			})}
