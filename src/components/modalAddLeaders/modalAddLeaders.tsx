@@ -3,16 +3,20 @@ import { Form, Formik } from 'formik';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
+import './modalAddLeaders.scss';
+
 import { createLeader } from '../../redux/leaders/leadersActions';
 import { modalAddLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
 
 import { IInitialLeader } from '../../redux/leaders/interfaces/leder.types';
 
-import './modalAddLeaders.scss';
-
 const initFormik = { name: '', score: Number('_') };
 
-const ModalAddLeaders: React.FC = () => {
+interface ModalAddLeadersProps {
+	handleAddOldLeaders: () => void;
+}
+
+const ModalAddLeaders = ({ handleAddOldLeaders }: ModalAddLeadersProps) => {
 	const dispatch = useDispatch();
 	const onToggleModal = () => dispatch(modalAddLeadersOpenAction());
 
@@ -38,6 +42,7 @@ const ModalAddLeaders: React.FC = () => {
 	const handleSubmit = (leader: IInitialLeader) => {
 		dispatch(createLeader(leader));
 		onToggleModal();
+		handleAddOldLeaders();
 	};
 
 	return (

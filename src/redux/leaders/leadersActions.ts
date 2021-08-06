@@ -14,7 +14,7 @@ export const fetchLeaders = () => async (dispatch: Dispatch) => {
 	try {
 		const { data } = await axios.get('http://coding-test.cube19.io/frontend/v1/starting-state');
 
-		const leader: ILeader = data.map((item: any, index: number) => {
+		const leader = data.map((item: ILeader, index: number) => {
 			return {
 				id: index,
 				name: item.name,

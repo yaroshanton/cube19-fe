@@ -12,9 +12,10 @@ import './modalEditLeaders.scss';
 
 interface ModalProps {
 	data: ILeader;
+	handleAddOldLeaders: () => void;
 }
 
-const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
+const ModalEditLeaders: FC<ModalProps> = ({ data, handleAddOldLeaders }: ModalProps) => {
 	const dispatch = useDispatch();
 	const [editLeaders, setEditLeaders] = useState(data);
 	const onToggleModal = () => dispatch(modalEditLeadersOpenAction());
@@ -47,6 +48,8 @@ const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 
 	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
+
+		handleAddOldLeaders();
 
 		if (data.score !== editLeaders.score) {
 			dispatch({ type: [editLeadersAction.type], payload: editLeaders });

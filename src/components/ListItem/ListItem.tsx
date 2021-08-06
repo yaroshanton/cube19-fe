@@ -1,6 +1,7 @@
+import './ListItem.scss';
 import UserImage from '../../assets/images/user.png';
 import PencilImage from '../../assets/images/pencil.png';
-import './ListItem.scss';
+
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
 interface TListItemProps {

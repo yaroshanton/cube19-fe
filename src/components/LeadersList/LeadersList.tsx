@@ -1,29 +1,38 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import ListItem from '../ListItem';
 import './LeadersList.scss';
 
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 import { StoreType } from '../../redux/store';
 
+import ListItem from '../ListItem';
 import ModalEditLeaders from '../modalEditLeaders';
+import ModalAddLeaders from '../modalAddLeaders/modalAddLeaders';
 
 import { sortedAllLeaders } from '../../redux/leaders/leadersSelectors';
 import { modalEditLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
-import { modalEditLeadersOpenSelector } from '../../redux/modalLeaders/modalLeadersSelectors';
+import {
+	modalEditLeadersOpenSelector,
+	modalAddLeadersOpenSelector,
+} from '../../redux/modalLeaders/modalLeadersSelectors';
 
 const LeadersList = () => {
-	// TODO: Check how ew can write code
-	const [oneLeader, setOneLeader] = useState<ILeader>({ name: '', score: 0, id: 0, position: 0, change: 0 });
 	const dispatch = useDispatch();
-	const leaders = useSelector(sortedAllLeaders);
+
+	const [oneLeader, setOneLeader] = useState<ILeader>({ name: '', score: 0, id: 0, position: 0, change: 0 });
 	const [oldLeaders, setOldLeaders] = useState<ILeader[]>([]);
+
+	const leaders = useSelector(sortedAllLeaders);
 	const isModalEditLeadersOpen = useSelector((state: StoreType) => modalEditLeadersOpenSelector(state));
+	const isModalAddLeadersOpen = useSelector((state: StoreType) => modalAddLeadersOpenSelector(state));
 
 	const handleClick = (leader: ILeader) => {
 		dispatch(modalEditLeadersOpenAction());
 		setOneLeader(leader);
+	};
+
+	const handleAddOldLeaders = (): void => {
 		setOldLeaders([...leaders]);
 	};
 
@@ -44,7 +53,8 @@ const LeadersList = () => {
 		<div className="leader-list">
 			<ListItem leaders={leaders} handleClick={handleClick} />
 
-			{isModalEditLeadersOpen && <ModalEditLeaders data={oneLeader} />}
+			{isModalEditLeadersOpen && <ModalEditLeaders data={oneLeader} handleAddOldLeaders={handleAddOldLeaders} />}
+			{isModalAddLeadersOpen && <ModalAddLeaders handleAddOldLeaders={handleAddOldLeaders} />}
 		</div>
 	);
 };
