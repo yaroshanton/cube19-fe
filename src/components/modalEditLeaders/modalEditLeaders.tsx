@@ -5,8 +5,9 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
-import { modalEditLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
+
 import { editLeadersAction } from '../../redux/leaders/actionTypes';
+import { modalEditLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
 
 import './modalEditLeaders.scss';
 
@@ -28,7 +29,7 @@ const ModalEditLeaders: FC<ModalProps> = ({ data, handleAddOldLeaders }: ModalPr
 	};
 	// TODO: Create custom hook for this func modalEdit
 
-	// Closing a modalk on click Escape
+	// Closing the modal by Escape
 	useEffect(() => {
 		const handleKeyDown = (e: { code: string }) => {
 			if (e.code === 'Escape') {
