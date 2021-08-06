@@ -12,7 +12,11 @@ import './modalAddLeaders.scss';
 
 const initFormik = { name: '', score: Number('_') };
 
-const ModalAddLeaders: React.FC = () => {
+interface ModalAddLeadersProps {
+	handleAddOldLeaders: () => void;
+}
+
+const ModalAddLeaders = ({ handleAddOldLeaders }: ModalAddLeadersProps) => {
 	const dispatch = useDispatch();
 	const onToggleModal = () => dispatch(modalAddLeadersOpenAction());
 
@@ -38,6 +42,7 @@ const ModalAddLeaders: React.FC = () => {
 	const handleSubmit = (leader: IInitialLeader) => {
 		dispatch(createLeader(leader));
 		onToggleModal();
+		handleAddOldLeaders();
 	};
 
 	return (

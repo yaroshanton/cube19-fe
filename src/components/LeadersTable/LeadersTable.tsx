@@ -1,17 +1,14 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { StoreType } from '../../redux/store';
+import { useDispatch } from 'react-redux';
 
 import LeadersList from '../LeadersList';
-import ModalAddLeaders from '../modalAddLeaders/modalAddLeaders';
+
 import './LeadersTable.scss';
 
 import { modalAddLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
-import { modalAddLeadersOpenSelector } from '../../redux/modalLeaders/modalLeadersSelectors';
 
 const LeadersTable = () => {
 	const dispatch = useDispatch();
 	const modalState = () => dispatch(modalAddLeadersOpenAction());
-	const modalOpen = useSelector((state: StoreType) => modalAddLeadersOpenSelector(state));
 
 	return (
 		<div className="table">
@@ -28,7 +25,6 @@ const LeadersTable = () => {
 				</div>
 			</div>
 			<LeadersList />
-			{modalOpen && <ModalAddLeaders />}
 		</div>
 	);
 };
