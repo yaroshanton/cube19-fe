@@ -3,26 +3,28 @@ import { Form, Formik } from 'formik';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { createLeader } from '../../redux/leaders/leadersOperations';
+import { createLeader } from '../../redux/leaders/leadersActions';
 import { modalAddLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
+
 import { IInitialLeader } from '../../redux/leaders/interfaces/leder.types';
 
 import './modalAddLeaders.scss';
 
-const initFormik = { name: '', score: 0 };
+const initFormik = { name: '', score: Number('_') };
 
 const ModalAddLeaders: React.FC = () => {
 	const dispatch = useDispatch();
 	const onToggleModal = () => dispatch(modalAddLeadersOpenAction());
 
-	// Закрытие модалки по клику Backdrop
-	const handleBackdropClick = (event: React.MouseEvent<HTMLInputElement>): void => {
+	// TODO Fix { currentTarget: any; target: any }
+	// Closing modal by Backdrop
+	const handleBackdropClick = (event: { currentTarget: any; target: any }): void => {
 		if (event.currentTarget === event.target) {
 			onToggleModal();
 		}
 	};
 
-	// Closing the modal by Escape
+	// Closing modal by Escape
 	useEffect(() => {
 		const handleKeyDown = (e: { code: string }) => {
 			if (e.code === 'Escape') {
@@ -40,7 +42,13 @@ const ModalAddLeaders: React.FC = () => {
 	};
 
 	return (
-		<div role="button" tabIndex={0} className="modal-backdrop" onClick={handleBackdropClick}>
+		<div
+			role="button"
+			tabIndex={0}
+			className="modal-backdrop"
+			onClick={handleBackdropClick}
+			onKeyDown={handleBackdropClick}
+		>
 			<div className="wrapper-modal">
 				<div className="modal">
 					<div

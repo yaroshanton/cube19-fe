@@ -8,7 +8,6 @@ import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
 import { editLeadersAction } from '../../redux/leaders/actionTypes';
 import { modalEditLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
-import '../modalAddLeaders/modalAddLeaders';
 
 import './modalEditLeaders.scss';
 
@@ -22,7 +21,7 @@ const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 	const onToggleModal = () => dispatch(modalEditLeadersOpenAction());
 
 	// Closing a modalk on click Backdrop
-	const handleBackdropClick = (event: React.MouseEvent<HTMLInputElement>): void => {
+	const handleBackdropClick = (event: { currentTarget: any; target: any }): void => {
 		if (event.currentTarget === event.target) {
 			onToggleModal();
 		}
@@ -67,7 +66,13 @@ const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 	};
 
 	return (
-		<div role="button" tabIndex={0} className="modal-backdrop" onClick={handleBackdropClick}>
+		<div
+			role="button"
+			tabIndex={0}
+			className="modal-backdrop"
+			onClick={handleBackdropClick}
+			onKeyDown={handleBackdropClick}
+		>
 			<div className="wrapper-modal" aria-hidden="true">
 				<div className="modal">
 					<div

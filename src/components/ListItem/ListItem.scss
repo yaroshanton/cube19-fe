@@ -1,5 +1,7 @@
 @import '../../stylesheet/shared.scss';
 
+//TODO Add Font-family names
+
 .list-item {
 	display: flex;
 	justify-content: space-between;
@@ -12,7 +14,7 @@
 	&__place {
 		width: 22px;
 		height: 21px;
-		font-family: $font-family-gilroy;
+		font-family: Gilroy;
 		font-style: normal;
 		font-weight: bold;
 		font-size: 20px;
@@ -28,7 +30,7 @@
 	&__score {
 		width: 44px;
 		height: 21px;
-		font-family: $font-family-gilroy;
+		font-family: 'Gilroy';
 		font-style: normal;
 		font-weight: bold;
 		font-size: 30px;
@@ -37,7 +39,7 @@
 		opacity: 0.91;
 	}
 	&__name {
-		font-family: $font-family-lato;
+		font-family: 'Lato', sans-serif;
 		width: 246px;
 		height: 23px;
 
