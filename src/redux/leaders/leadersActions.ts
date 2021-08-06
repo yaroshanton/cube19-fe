@@ -24,15 +24,7 @@ export const fetchLeaders = () => async (dispatch: Dispatch) => {
 
 		dispatch({ type: [fetchLeadersSuccess.type], payload: leader });
 	} catch (error) {
-		toast.error('Request error, reloading the page!', {
-			position: 'top-center',
-			autoClose: 2000,
-			hideProgressBar: false,
-			closeOnClick: true,
-			pauseOnHover: true,
-			draggable: true,
-			progress: undefined,
-		});
+		toast.error('Request error, reloading the page!');
 
 		dispatch({ type: [fetchLeadersError.type], payload: error.message });
 	}

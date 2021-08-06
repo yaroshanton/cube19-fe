@@ -1,8 +1,6 @@
 import { useEffect, useState, FC, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
-
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
@@ -10,6 +8,7 @@ import { editLeadersAction } from '../../redux/leaders/actionTypes';
 import { modalEditLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
 
 import './modalEditLeaders.scss';
+// import { modalEdit } from '../../utils/toast';
 
 interface ModalProps {
 	data: ILeader;
@@ -53,15 +52,7 @@ const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 			dispatch({ type: [editLeadersAction.type], payload: editLeaders });
 			onToggleModal();
 		} else {
-			toast.dark('You made no change!', {
-				position: 'top-center',
-				autoClose: 2000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-			});
+			toast.dark('You made no change!');
 		}
 	};
 
