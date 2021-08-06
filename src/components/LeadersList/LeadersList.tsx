@@ -21,9 +21,9 @@ const LeadersList = () => {
 	const dispatch = useDispatch();
 
 	const [oneLeader, setOneLeader] = useState<ILeader>({ name: '', score: 0, id: 0, position: 0, change: 0 });
-	const [oldLeaders, setOldLeaders] = useState<ILeader[]>([]);
 
 	const leaders = useSelector(sortedAllLeaders);
+	const [oldLeaders, setOldLeaders] = useState<ILeader[][]>([]);
 	const isModalEditLeadersOpen = useSelector((state: StoreType) => modalEditLeadersOpenSelector(state));
 	const isModalAddLeadersOpen = useSelector((state: StoreType) => modalAddLeadersOpenSelector(state));
 
@@ -33,16 +33,18 @@ const LeadersList = () => {
 	};
 
 	const handleAddOldLeaders = (): void => {
-		setOldLeaders([...leaders]);
+		setOldLeaders([...oldLeaders, [...leaders]]);
 	};
 
-	const defendenceLeaders = (leadersArr: ILeader[], oldLeadersArr: ILeader[]) => {
+	const defendenceLeaders = (leadersArr: ILeader[], oldLeadersArr: ILeader[][]) => {
 		leadersArr.map((leader: ILeader) => {
-			return oldLeadersArr.map((oldLeader: ILeader) => {
-				if (leader.id === oldLeader.id) {
-					leader.change = oldLeader.position - leader.position;
-				}
-				return leader.change;
+			return oldLeadersArr.map((oldLeader: ILeader[]) => {
+				return oldLeader.map(oLeader => {
+					if (leader.id === oLeader.id) {
+						leader.change = oLeader.position - leader.position;
+					}
+					return leader.change;
+				});
 			});
 		});
 	};

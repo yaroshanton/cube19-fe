@@ -17,7 +17,7 @@ function App() {
 
 	useEffect(() => {
 		dispatch(fetchLeaders());
-	}, [dispatch]);
+	}, []);
 
 	return (
 		<>
