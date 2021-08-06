@@ -1,10 +1,10 @@
 import { StoreType } from '../store';
-import { ILeader } from './interfaces/leder.types';
+// import { IInitialLeader } from './interfaces/leder.types';
 
 // TODO: Check return state.leaders
-export const getAlLeaders = (state: StoreType): ILeader[] => [...state.leaders];
+export const getAlLeaders = (state: StoreType) => [...state.leaders];
 
-export const sortedAllLeaders = (state: StoreType): ILeader[] =>
+export const sortedAllLeaders = (state: StoreType) =>
 	getAlLeaders(state)
 		.sort((a, b) => b.score - a.score)
 		.map((leader, index: number) => {

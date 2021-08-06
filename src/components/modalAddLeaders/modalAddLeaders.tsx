@@ -16,9 +16,8 @@ const ModalAddLeaders: React.FC = () => {
 	const dispatch = useDispatch();
 	const onToggleModal = () => dispatch(modalAddLeadersOpenAction());
 
-	// TODO Fix { currentTarget: any; target: any }
 	// Closing modal by Backdrop
-	const handleBackdropClick = (event: { currentTarget: any; target: any }): void => {
+	const handleBackdropClick = (event: React.FormEvent<EventTarget>): void => {
 		if (event.currentTarget === event.target) {
 			onToggleModal();
 		}
