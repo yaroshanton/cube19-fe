@@ -3,12 +3,12 @@ import { Form, Formik } from 'formik';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
+import './modalAddLeaders.scss';
+
 import { createLeader } from '../../redux/leaders/leadersActions';
 import { modalAddLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
 
 import { IInitialLeader } from '../../redux/leaders/interfaces/leder.types';
-
-import './modalAddLeaders.scss';
 
 const initFormik = { name: '', score: Number('_') };
 

@@ -1,7 +1,5 @@
 import { StoreType } from '../store';
-// import { IInitialLeader } from './interfaces/leder.types';
 
-// TODO: Check return state.leaders
 export const getAlLeaders = (state: StoreType) => [...state.leaders];
 
 export const sortedAllLeaders = (state: StoreType) =>
