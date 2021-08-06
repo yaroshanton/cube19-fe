@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
-import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
-import leaderImg from '../../assets/images/bg-leadboard.png';
-import profileImg from '../../assets/images/profile-img.png';
+import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 import { getTopScoreLeaders } from '../../redux/leaders/leadersSelectors';
+
 import './HighestScorers.scss';
+import profileImg from '../../assets/images/profile-img.png';
+import leaderImg from '../../assets/images/bg-leadboard.png';
 
 const HighestScorers = () => {
 	const leaders: ILeader[] = useSelector(getTopScoreLeaders);

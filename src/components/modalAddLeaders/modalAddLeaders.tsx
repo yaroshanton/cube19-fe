@@ -4,26 +4,27 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { createLeader } from '../../redux/leaders/leadersActions';
-import { modalAddLeadersOpenAction } from '../../redux/modalAddLeaders/modalAddLeadersActions';
+import { modalAddLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
 
-import { ILeader } from '../../redux/leaders/interfaces/leder.types';
+import { IInitialLeader } from '../../redux/leaders/interfaces/leder.types';
 
 import './modalAddLeaders.scss';
 
 const initFormik = { name: '', score: 0 };
 
 const ModalAddLeaders: React.FC = () => {
-	const dispatch: any = useDispatch();
-	const onToggleModal: any = () => dispatch(modalAddLeadersOpenAction());
+	const dispatch = useDispatch();
+	const onToggleModal = () => dispatch(modalAddLeadersOpenAction());
 
-	// Closing modal on click Backdrop
+	// TODO Fix { currentTarget: any; target: any }
+	// Closing modal by Backdrop
 	const handleBackdropClick = (event: { currentTarget: any; target: any }): void => {
 		if (event.currentTarget === event.target) {
 			onToggleModal();
 		}
 	};
 
-	// Closing the modal by Escape
+	// Closing modal by Escape
 	useEffect(() => {
 		const handleKeyDown = (e: { code: string }) => {
 			if (e.code === 'Escape') {
@@ -35,7 +36,7 @@ const ModalAddLeaders: React.FC = () => {
 		window.addEventListener('keydown', handleKeyDown);
 	}, [onToggleModal]);
 
-	const handleSubmit = (leader: ILeader) => {
+	const handleSubmit = (leader: IInitialLeader) => {
 		dispatch(createLeader(leader));
 		onToggleModal();
 	};

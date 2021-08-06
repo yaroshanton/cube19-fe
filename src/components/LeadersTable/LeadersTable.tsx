@@ -1,14 +1,25 @@
+<<<<<<< HEAD
 import './LeadersTable.scss';
+=======
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+
+import React from 'react';
+>>>>>>> create-logic-edit-leader
 import { useDispatch, useSelector } from 'react-redux';
-import { modalAddLeadersOpenAction } from '../../redux/modalAddLeaders/modalAddLeadersActions';
-import { modalAddLeadersOpenSelector } from '../../redux/modalAddLeaders/modalAddLeadersSelectors';
+import { StoreType } from '../../redux/store';
+
 import LeadersList from '../LeadersList';
 import ModalAddLeaders from '../modalAddLeaders/modalAddLeaders';
+import './LeadersTable.scss';
+
+import { modalAddLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
+import { modalAddLeadersOpenSelector } from '../../redux/modalLeaders/modalLeadersSelectors';
 
 const LeadersTable = () => {
-	const dispatch: any = useDispatch();
+	const dispatch = useDispatch();
 	const modalState = () => dispatch(modalAddLeadersOpenAction());
-	const modalOpen = useSelector(state => modalAddLeadersOpenSelector(state));
+	const modalOpen = useSelector((state: StoreType) => modalAddLeadersOpenSelector(state));
 
 	return (
 		<div className="table">

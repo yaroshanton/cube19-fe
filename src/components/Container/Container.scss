@@ -1,9 +1,14 @@
 .container {
 	width: 100%;
+<<<<<<< HEAD
 	padding-left: 20px;
 	padding-right: 20px;
 	margin-left: auto;
 	margin-right: auto;
+=======
+	padding: 0 20px;
+	margin: 0 auto;
+>>>>>>> create-logic-edit-leader
 
 	@media (min-width: 320px) {
 		width: 320px;
@@ -11,13 +16,11 @@
 
 	@media (min-width: 768px) {
 		width: 768px;
-		padding-left: 40px;
-		padding-right: 40px;
+		padding: 0 40px;
 	}
 
 	@media (min-width: 1280px) {
 		width: 984px;
-		padding-left: 111px;
-		padding-right: 111px;
+		padding: 0 111px;
 	}
 }

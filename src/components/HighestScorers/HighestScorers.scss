@@ -12,7 +12,7 @@
 
 	.highest-scores {
 		h2 {
-			font-family: 'Gilroy', sans-serif;
+			font-family: $font-family-gilroy;
 			font-weight: 600;
 			font-size: 20px;
 			color: #fff;
@@ -28,7 +28,7 @@
 				position: relative;
 
 				h3 {
-					font-family: 'Lato', sans-serif;
+					font-family: $font-family-lato;
 					font-weight: 400;
 					font-size: 12px;
 					color: #fff;

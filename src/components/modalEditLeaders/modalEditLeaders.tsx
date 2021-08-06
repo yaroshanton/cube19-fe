@@ -5,11 +5,16 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
+import { modalEditLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
+import { editLeadersAction } from '../../redux/leaders/actionTypes';
 
+<<<<<<< HEAD
 import { editLeadersAction } from '../../redux/leaders/actionTypes';
 import { modalEditLeadersOpenAction } from '../../redux/modalEditLeaders/modalEditLeadersActions';
 import '../modalAddLeaders/modalAddLeaders';
 
+=======
+>>>>>>> create-logic-edit-leader
 import './modalEditLeaders.scss';
 
 interface ModalProps {
@@ -17,11 +22,15 @@ interface ModalProps {
 }
 
 const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
-	const dispatch: any = useDispatch();
+	const dispatch = useDispatch();
 	const [editLeaders, setEditLeaders] = useState(data);
-	const onToggleModal: any = () => dispatch(modalEditLeadersOpenAction());
+	const onToggleModal = () => dispatch(modalEditLeadersOpenAction());
 
+<<<<<<< HEAD
 	// Close modal on click Backdrop
+=======
+	// Closing a modalk on click Backdrop
+>>>>>>> create-logic-edit-leader
 	const handleBackdropClick = (event: { currentTarget: any; target: any }): void => {
 		if (event.currentTarget === event.target) {
 			onToggleModal();
@@ -29,7 +38,11 @@ const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 	};
 	// TODO: Create custom hook for this func modalEdit
 
+<<<<<<< HEAD
 	// Closing the modal by Escape
+=======
+	// Closing a modalk on click Escape
+>>>>>>> create-logic-edit-leader
 	useEffect(() => {
 		const handleKeyDown = (e: { code: string }) => {
 			if (e.code === 'Escape') {
