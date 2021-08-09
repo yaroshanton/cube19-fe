@@ -6,11 +6,11 @@ import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
 interface TListItemProps {
 	leaders: ILeader[];
-	handleClick: (param: ILeader) => void;
+	updateOneLeader: (param: ILeader) => void;
 }
 
 const ListItem = (props: TListItemProps) => {
-	const { leaders, handleClick } = props;
+	const { leaders, updateOneLeader } = props;
 
 	return (
 		<div className="wrapper-list-item">
@@ -26,8 +26,8 @@ const ListItem = (props: TListItemProps) => {
 						</div>
 						<div
 							className="list-item__edit cursor-pointer"
-							onClick={() => handleClick(leader)}
-							onKeyDown={() => handleClick}
+							onClick={() => updateOneLeader(leader)}
+							onKeyDown={() => updateOneLeader}
 							role="button"
 							tabIndex={0}
 						>

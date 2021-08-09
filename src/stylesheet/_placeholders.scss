@@ -1,10 +1,12 @@
-%toolbelt {
-	box-sizing: border-box;
-	border-top: 1px rgba(#000, 0.12) solid;
-	padding: 16px 0;
-	width: 100%;
+%prev-next-buttons {
+	border: 1px solid #000;
+	width: 100px;
+	height: 40px;
+	border-radius: 6px;
 
 	&:hover {
-		border: 2px rgba(#000, 0.5) solid;
+		background-color: $button-primary-color;
+		color: #fff;
+		border-color: transparent;
 	}
 }

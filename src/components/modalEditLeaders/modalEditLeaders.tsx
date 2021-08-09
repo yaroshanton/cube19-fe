@@ -8,13 +8,14 @@ import { editLeadersAction } from '../../redux/leaders/actionTypes';
 import { modalEditLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
 
 import './modalEditLeaders.scss';
+// import { modalEdit } from '../../utils/toast';
 
 interface ModalProps {
 	data: ILeader;
-	handleAddOldLeaders: () => void;
+	// handleAddOldLeaders: () => void;
 }
 
-const ModalEditLeaders: FC<ModalProps> = ({ data, handleAddOldLeaders }: ModalProps) => {
+const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 	const dispatch = useDispatch();
 	const [editLeaders, setEditLeaders] = useState(data);
 	const onToggleModal = () => dispatch(modalEditLeadersOpenAction());
@@ -51,7 +52,7 @@ const ModalEditLeaders: FC<ModalProps> = ({ data, handleAddOldLeaders }: ModalPr
 		if (data.score !== editLeaders.score) {
 			dispatch({ type: [editLeadersAction.type], payload: editLeaders });
 			onToggleModal();
-			handleAddOldLeaders();
+			// handleAddOldLeaders();
 		} else {
 			toast.error('🦄 You made no change!', {
 				autoClose: 2000,

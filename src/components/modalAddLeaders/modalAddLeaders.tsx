@@ -13,11 +13,11 @@ import { IInitialLeader } from '../../redux/leaders/interfaces/leder.types';
 
 const initFormik = { name: '', score: Number('_') };
 
-interface ModalAddLeadersProps {
-	handleAddOldLeaders: () => void;
-}
+// interface ModalAddLeadersProps {
+// 	handleAddOldLeaders: () => void;
+// }
 
-const ModalAddLeaders = ({ handleAddOldLeaders }: ModalAddLeadersProps) => {
+const ModalAddLeaders = () => {
 	const dispatch = useDispatch();
 	const onToggleModal = () => dispatch(modalAddLeadersOpenAction());
 
@@ -44,7 +44,7 @@ const ModalAddLeaders = ({ handleAddOldLeaders }: ModalAddLeadersProps) => {
 		if (leader.name !== '' && leader.score !== Number('_')) {
 			dispatch(createLeader(leader));
 			onToggleModal();
-			handleAddOldLeaders();
+			// handleAddOldLeaders();
 		} else {
 			toast.error('🦄 Enter your name and score!', {
 				autoClose: 2000,

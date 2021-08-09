@@ -10,7 +10,8 @@ import ModalEditLeaders from '../modalEditLeaders';
 import ModalAddLeaders from '../modalAddLeaders/modalAddLeaders';
 
 import { sortedAllLeaders } from '../../redux/leaders/leadersSelectors';
-import { modalEditLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
+import { fetchLeaders } from '../../redux/leaders/leadersActions';
+import { modalEditLeadersOpenAction, modalAddLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
 import {
 	modalEditLeadersOpenSelector,
 	modalAddLeadersOpenSelector,
@@ -21,12 +22,26 @@ const LeadersList = () => {
 
 	const [oneLeader, setOneLeader] = useState<ILeader>({ name: '', score: 0, id: 0, position: 0, change: 0 });
 	const [oldLeaders, setOldLeaders] = useState<ILeader[][]>([]);
+	const [count, setCount] = useState(0);
 
 	const leaders = useSelector(sortedAllLeaders);
+
 	const isModalEditLeadersOpen = useSelector(modalEditLeadersOpenSelector);
 	const isModalAddLeadersOpen = useSelector(modalAddLeadersOpenSelector);
 
-	const handleClick = (leader: ILeader) => {
+	const onToggleModalAdd = () => dispatch(modalAddLeadersOpenAction());
+
+	const handlePlusCountArrays = () => {
+		setCount(count - 1);
+	};
+
+	const handleMinusCountArrays = () => {
+		setCount(count + 1);
+	};
+
+	console.log(count);
+
+	const handleUpdateOneLeader = (leader: ILeader) => {
 		dispatch(modalEditLeadersOpenAction());
 		setOneLeader(leader);
 	};
@@ -35,15 +50,16 @@ const LeadersList = () => {
 		setOldLeaders([...oldLeaders, [...leaders]]);
 	}, [leaders]);
 
-	const handleAddOldLeaders = (): void => {
-		console.log(2);
+	const handleAddNewDay = () => {
+		dispatch(fetchLeaders());
+		setOldLeaders([...oldLeaders, [...leaders]]);
 	};
 
 	const defendenceLeaders = (leadersArr: ILeader[], oldLeadersArr: ILeader[][]) => {
 		leadersArr.map((leader: ILeader) => {
 			return oldLeadersArr.map((oldLeader: ILeader[]) => {
 				return oldLeader.map(oLeader => {
-					if (leader.id === oLeader.id) {
+					if (leader.name === oLeader.name) {
 						leader.change = oLeader.position - leader.position;
 					}
 					return leader.change;
@@ -55,12 +71,39 @@ const LeadersList = () => {
 	defendenceLeaders(leaders, oldLeaders);
 
 	return (
-		<div className="leader-list">
-			<ListItem leaders={leaders} handleClick={handleClick} />
+		<>
+			<div className="table">
+				<div className="table-header">
+					<div className="table-header__text">Leaders table for this period</div>
+					<button type="button" className="table-button__new-day" onClick={handleAddNewDay}>
+						New Day
+					</button>
+					<button type="button" className="table-button__prev-day" onClick={handlePlusCountArrays}>
+						Prev Day
+					</button>
+					<button type="button" className="table-button__next-day" onClick={handleMinusCountArrays}>
+						Next Day
+					</button>
+					<div
+						className="table-header__button cursor-pointer"
+						role="button"
+						tabIndex={0}
+						onClick={onToggleModalAdd}
+						onKeyDown={onToggleModalAdd}
+					>
+						+ Add new score
+					</div>
+				</div>
 
-			{isModalEditLeadersOpen && <ModalEditLeaders data={oneLeader} handleAddOldLeaders={handleAddOldLeaders} />}
-			{isModalAddLeadersOpen && <ModalAddLeaders handleAddOldLeaders={handleAddOldLeaders} />}
-		</div>
+				<div className="leader-list">
+					{}
+					<ListItem leaders={leaders} updateOneLeader={handleUpdateOneLeader} />
+
+					{isModalEditLeadersOpen && <ModalEditLeaders data={oneLeader} />}
+					{isModalAddLeadersOpen && <ModalAddLeaders />}
+				</div>
+			</div>
+		</>
 	);
 };
 
