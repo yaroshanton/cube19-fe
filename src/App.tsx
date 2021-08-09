@@ -8,7 +8,7 @@ import { fetchLeaders } from './redux/leaders/leadersActions';
 import Container from './components/Container';
 import Title from './components/Title';
 import HighestScorers from './components/HighestScorers';
-import LeadersTable from './components/LeadersTable';
+import LeadersList from './components/LeadersList/LeadersList';
 
 function App() {
 	const dispatch = useDispatch();
@@ -22,7 +22,7 @@ function App() {
 			<Container>
 				<Title />
 				<HighestScorers />
-				<LeadersTable />
+				<LeadersList />
 			</Container>
 			<ToastContainer />
 		</>
