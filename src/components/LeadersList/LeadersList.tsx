@@ -1,10 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import './LeadersList.scss';
 
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
-import { StoreType } from '../../redux/store';
 
 import ListItem from '../ListItem';
 import ModalEditLeaders from '../modalEditLeaders';
@@ -21,19 +20,23 @@ const LeadersList = () => {
 	const dispatch = useDispatch();
 
 	const [oneLeader, setOneLeader] = useState<ILeader>({ name: '', score: 0, id: 0, position: 0, change: 0 });
+	const [oldLeaders, setOldLeaders] = useState<ILeader[][]>([]);
 
 	const leaders = useSelector(sortedAllLeaders);
-	const [oldLeaders, setOldLeaders] = useState<ILeader[][]>([]);
-	const isModalEditLeadersOpen = useSelector((state: StoreType) => modalEditLeadersOpenSelector(state));
-	const isModalAddLeadersOpen = useSelector((state: StoreType) => modalAddLeadersOpenSelector(state));
+	const isModalEditLeadersOpen = useSelector(modalEditLeadersOpenSelector);
+	const isModalAddLeadersOpen = useSelector(modalAddLeadersOpenSelector);
 
 	const handleClick = (leader: ILeader) => {
 		dispatch(modalEditLeadersOpenAction());
 		setOneLeader(leader);
 	};
 
-	const handleAddOldLeaders = (): void => {
+	useEffect(() => {
 		setOldLeaders([...oldLeaders, [...leaders]]);
+	}, [leaders]);
+
+	const handleAddOldLeaders = (): void => {
+		console.log(2);
 	};
 
 	const defendenceLeaders = (leadersArr: ILeader[], oldLeadersArr: ILeader[][]) => {

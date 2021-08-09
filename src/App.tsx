@@ -3,10 +3,8 @@ import { useDispatch } from 'react-redux';
 
 import { ToastContainer } from 'react-toastify';
 
-// Actions
 import { fetchLeaders } from './redux/leaders/leadersActions';
 
-// Components
 import Container from './components/Container';
 import Title from './components/Title';
 import HighestScorers from './components/HighestScorers';
