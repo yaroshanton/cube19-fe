@@ -13,10 +13,6 @@ import { IInitialLeader } from '../../redux/leaders/interfaces/leder.types';
 
 const initFormik = { name: '', score: Number('_') };
 
-// interface ModalAddLeadersProps {
-// 	handleAddOldLeaders: () => void;
-// }
-
 const ModalAddLeaders = () => {
 	const dispatch = useDispatch();
 	const onToggleModal = () => dispatch(modalAddLeadersOpenAction());

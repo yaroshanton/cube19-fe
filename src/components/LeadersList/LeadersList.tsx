@@ -5,8 +5,8 @@ import './LeadersList.scss';
 
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
-import ListItem from '../ListItem';
-import ModalEditLeaders from '../modalEditLeaders';
+import ListItem from '../ListItem/ListItem';
+import ModalEditLeaders from '../modalEditLeaders/modalEditLeaders';
 import ModalAddLeaders from '../modalAddLeaders/modalAddLeaders';
 
 import { sortedAllLeaders } from '../../redux/leaders/leadersSelectors';
@@ -22,24 +22,12 @@ const LeadersList = () => {
 
 	const [oneLeader, setOneLeader] = useState<ILeader>({ name: '', score: 0, id: 0, position: 0, change: 0 });
 	const [oldLeaders, setOldLeaders] = useState<ILeader[][]>([]);
-	const [count, setCount] = useState(0);
 
 	const leaders = useSelector(sortedAllLeaders);
-
 	const isModalEditLeadersOpen = useSelector(modalEditLeadersOpenSelector);
 	const isModalAddLeadersOpen = useSelector(modalAddLeadersOpenSelector);
 
 	const onToggleModalAdd = () => dispatch(modalAddLeadersOpenAction());
-
-	const handlePlusCountArrays = () => {
-		setCount(count - 1);
-	};
-
-	const handleMinusCountArrays = () => {
-		setCount(count + 1);
-	};
-
-	console.log(count);
 
 	const handleUpdateOneLeader = (leader: ILeader) => {
 		dispatch(modalEditLeadersOpenAction());
@@ -47,12 +35,17 @@ const LeadersList = () => {
 	};
 
 	useEffect(() => {
-		setOldLeaders([...oldLeaders, [...leaders]]);
+		if (leaders.length > 1) {
+			setOldLeaders([...oldLeaders, [...leaders]]);
+		}
+
+		console.log('oldLeaders', oldLeaders);
+		console.log('leaders', leaders);
 	}, [leaders]);
 
 	const handleAddNewDay = () => {
 		dispatch(fetchLeaders());
-		setOldLeaders([...oldLeaders, [...leaders]]);
+		// setOldLeaders([...oldLeaders, [...leaders]]);
 	};
 
 	const defendenceLeaders = (leadersArr: ILeader[], oldLeadersArr: ILeader[][]) => {
@@ -78,10 +71,10 @@ const LeadersList = () => {
 					<button type="button" className="table-button__new-day" onClick={handleAddNewDay}>
 						New Day
 					</button>
-					<button type="button" className="table-button__prev-day" onClick={handlePlusCountArrays}>
+					<button type="button" className="table-button__prev-day">
 						Prev Day
 					</button>
-					<button type="button" className="table-button__next-day" onClick={handleMinusCountArrays}>
+					<button type="button" className="table-button__next-day">
 						Next Day
 					</button>
 					<div
@@ -96,7 +89,6 @@ const LeadersList = () => {
 				</div>
 
 				<div className="leader-list">
-					{}
 					<ListItem leaders={leaders} updateOneLeader={handleUpdateOneLeader} />
 
 					{isModalEditLeadersOpen && <ModalEditLeaders data={oneLeader} />}

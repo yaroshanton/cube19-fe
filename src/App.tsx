@@ -5,9 +5,9 @@ import { ToastContainer } from 'react-toastify';
 
 import { fetchLeaders } from './redux/leaders/leadersActions';
 
-import Container from './components/Container';
-import Title from './components/Title';
-import HighestScorers from './components/HighestScorers';
+import Container from './components/Container/Container';
+import Title from './components/Title/Title';
+import HighestScorers from './components/HighestScorers/HighestScorers';
 import LeadersList from './components/LeadersList/LeadersList';
 
 function App() {
