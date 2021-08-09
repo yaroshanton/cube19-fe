@@ -8,6 +8,46 @@
 	box-sizing: border-box;
 	border-radius: 10px;
 
+	&-button__left {
+		background: $button-primary-color;
+		border: 1px solid #eceef5;
+		box-sizing: border-box;
+		border-radius: 6px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		width: 130px;
+		height: 40px;
+
+		font-family: $font-family-lato;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 12px;
+		line-height: 18px;
+		color: #ffffff;
+	}
+
+	&-button__right {
+		background: $button-primary-color;
+		border: 1px solid #eceef5;
+		box-sizing: border-box;
+		border-radius: 6px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		width: 130px;
+		height: 40px;
+
+		font-family: $font-family-lato;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 12px;
+		line-height: 18px;
+		color: #ffffff;
+	}
+
 	&-header {
 		display: flex;
 		justify-content: space-between;

@@ -8,7 +8,6 @@ import { editLeadersAction } from '../../redux/leaders/actionTypes';
 import { modalEditLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
 
 import './modalEditLeaders.scss';
-// import { modalEdit } from '../../utils/toast';
 
 interface ModalProps {
 	data: ILeader;

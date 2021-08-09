@@ -1,0 +1,10 @@
+%toolbelt {
+	box-sizing: border-box;
+	border-top: 1px rgba(#000, 0.12) solid;
+	padding: 16px 0;
+	width: 100%;
+
+	&:hover {
+		border: 2px rgba(#000, 0.5) solid;
+	}
+}

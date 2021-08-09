@@ -8,22 +8,29 @@ import { modalAddLeadersOpenAction } from '../../redux/modalLeaders/modalLeaders
 
 const LeadersTable = () => {
 	const dispatch = useDispatch();
-	const modalState = () => dispatch(modalAddLeadersOpenAction());
+	const onToggleModal = () => dispatch(modalAddLeadersOpenAction());
 
 	return (
 		<div className="table">
 			<div className="table-header">
 				<div className="table-header__text">Leaders table for this period</div>
+				<button type="button" className="table-button__left">
+					{' '}
+				</button>
+				<button type="button" className="table-button__right">
+					{' '}
+				</button>
 				<div
 					className="table-header__button cursor-pointer"
 					role="button"
 					tabIndex={0}
-					onClick={modalState}
-					onKeyDown={modalState}
+					onClick={onToggleModal}
+					onKeyDown={onToggleModal}
 				>
 					+ Add new score
 				</div>
 			</div>
+
 			<LeadersList />
 		</div>
 	);

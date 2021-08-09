@@ -2,11 +2,10 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 
 import { toast } from 'react-toastify';
-import { baseUrl } from './api/api-links';
-
 import 'react-toastify/dist/ReactToastify.css';
 
-// Types
+import { baseUrl } from './api/api-links';
+
 import { ILeader, IInitialLeader } from './interfaces/leder.types';
 import { fetchLeadersRequest, fetchLeadersSuccess, fetchLeadersError, addLeadersAction } from './actionTypes';
 
