@@ -23,7 +23,7 @@ const LeadersList = () => {
 
 	const [oneLeader, setOneLeader] = useState<ILeader>({ name: '', score: 0, id: 0, position: 0, change: 0 });
 	const [historyDay, setHistoryDay] = useState(0);
-	const [toggleViewHistory, settoggleViewHistory] = useState(false);
+	const [toggleViewHistory, setToggleViewHistory] = useState(false);
 
 	const leaders = useSelector(sortedAllLeaders);
 	const oldLeaders = useSelector(sortedAllOldLeaders);
@@ -42,7 +42,7 @@ const LeadersList = () => {
 		dispatch(fetchLeaders());
 		dispatch({ type: [addOldLeadersAction.type], payload: leaders });
 		setHistoryDay(historyDay + 1);
-		settoggleViewHistory(false);
+		setToggleViewHistory(false);
 	};
 
 	const handlePrevDay = () => {
@@ -50,7 +50,7 @@ const LeadersList = () => {
 			dispatch({ type: [addOldLeadersAction.type], payload: leaders });
 		}
 		setHistoryDay(historyDay - 1);
-		settoggleViewHistory(true);
+		setToggleViewHistory(true);
 	};
 
 	const handleNextDay = () => {
