@@ -1,16 +1,15 @@
-/* eslint-disable use-isnan */
 import './ListItem.scss';
 import UserImage from '../../assets/images/user.png';
 import PencilImage from '../../assets/images/pencil.png';
 
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
-interface TListItemProps {
+interface IListItemProps {
 	leaders: ILeader[];
 	updateOneLeader: (param: ILeader) => void;
 }
 
-const ListItem = (props: TListItemProps) => {
+const ListItem = (props: IListItemProps) => {
 	const { leaders, updateOneLeader } = props;
 
 	return (
