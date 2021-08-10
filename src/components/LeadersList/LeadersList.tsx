@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import './LeadersList.scss';
@@ -24,6 +24,7 @@ const LeadersList = () => {
 	const [oldLeaders, setOldLeaders] = useState<ILeader[][]>([]);
 
 	const leaders = useSelector(sortedAllLeaders);
+
 	const isModalEditLeadersOpen = useSelector(modalEditLeadersOpenSelector);
 	const isModalAddLeadersOpen = useSelector(modalAddLeadersOpenSelector);
 
@@ -36,33 +37,29 @@ const LeadersList = () => {
 
 	useEffect(() => {
 		if (leaders.length > 1) {
-			setOldLeaders([...oldLeaders, [...leaders]]);
+			setOldLeaders([...oldLeaders, leaders]);
 		}
-
-		console.log('oldLeaders', oldLeaders);
-		console.log('leaders', leaders);
 	}, [leaders]);
 
 	const handleAddNewDay = () => {
 		dispatch(fetchLeaders());
-		// setOldLeaders([...oldLeaders, [...leaders]]);
 	};
 
-	const defendenceLeaders = (leadersArr: ILeader[], oldLeadersArr: ILeader[][]) => {
-		leadersArr.map((leader: ILeader) => {
-			return oldLeadersArr.map((oldLeader: ILeader[]) => {
-				return oldLeader.map(oLeader => {
-					if (leader.name === oLeader.name) {
-						leader.change = oLeader.position - leader.position;
-					}
-					return leader.change;
-				});
-			});
-		});
-	};
+	// const defendenceLeaders = (leadersArr: ILeader[], oldLeadersArr: ILeader[][]) => {
+	// 	leadersArr.map((leader: ILeader) => {
+	// 		return oldLeadersArr.map((oldLeader: ILeader[]) => {
+	// 			return oldLeader.map(oLeader => {
+	// 				if (leader.name === oLeader.name) {
+	// 					leader.change = oLeader.position - leader.position;
+	// 				}
+	// 				return leader.change;
+	// 			});
+	// 		});
+	// 	});
+	// };
 
-	defendenceLeaders(leaders, oldLeaders);
-
+	// defendenceLeaders(leaders, oldLeaders);
+	const int = 0;
 	return (
 		<>
 			<div className="table">
@@ -89,7 +86,7 @@ const LeadersList = () => {
 				</div>
 
 				<div className="leader-list">
-					<ListItem leaders={leaders} updateOneLeader={handleUpdateOneLeader} />
+					<ListItem leaders={oldLeaders[int]} updateOneLeader={handleUpdateOneLeader} />
 
 					{isModalEditLeadersOpen && <ModalEditLeaders data={oneLeader} />}
 					{isModalAddLeadersOpen && <ModalAddLeaders />}

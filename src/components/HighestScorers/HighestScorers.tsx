@@ -15,14 +15,13 @@ const HighestScorers = () => {
 			<div className="highest-scores">
 				<h2>All time Highest Scorers</h2>
 				<ul className="highest-scores-list">
-					{leaders &&
-						leaders.map(leader => (
-							<li key={leader.id} className="highest-scores__item">
-								<img src={profileImg} alt="leader" className="highest-scores__item__img" />
-								<h3>{leader.name}</h3>
-								<p>{leader.score}</p>
-							</li>
-						))}
+					{leaders.map(leader => (
+						<li key={leader.id} className="highest-scores__item">
+							<img src={profileImg} alt="leader" className="highest-scores__item__img" />
+							<h3>{leader.name}</h3>
+							<p>{leader.score}</p>
+						</li>
+					))}
 				</ul>
 			</div>
 			<div className="highest-scores-image">
