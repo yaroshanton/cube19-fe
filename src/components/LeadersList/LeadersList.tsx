@@ -22,8 +22,8 @@ const LeadersList = () => {
 	const dispatch = useDispatch();
 
 	const [oneLeader, setOneLeader] = useState<ILeader>({ name: '', score: 0, id: 0, position: 0, change: 0 });
-	const [historyDay, setHistoryDay] = useState(0);
 	const [toggleViewHistory, setToggleViewHistory] = useState(false);
+	const [historyDay, setHistoryDay] = useState(0);
 
 	const leaders = useSelector(sortedAllLeaders);
 	const oldLeaders = useSelector(sortedAllOldLeaders);
@@ -46,12 +46,11 @@ const LeadersList = () => {
 		}
 
 		// return what day in count days
-		if (!toggleViewHistory || historyDay < oldLeaders.length) {
+		if (!toggleViewHistory || historyDay <= oldLeaders.length) {
 			setHistoryDay(oldLeaders.length);
-		} else {
-			setHistoryDay(historyDay + 1);
 		}
 
+		setHistoryDay(historyDay + 1);
 		setToggleViewHistory(false);
 	};
 
@@ -102,7 +101,7 @@ const LeadersList = () => {
 					<button
 						type="button"
 						className="table-button__next-day"
-						disabled={historyDay === oldLeaders.length - 1}
+						disabled={historyDay === oldLeaders.length - 1 || historyDay === oldLeaders.length}
 						onClick={handleNextDay}
 					>
 						Next Day
