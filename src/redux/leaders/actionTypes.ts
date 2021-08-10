@@ -6,3 +6,5 @@ export const fetchLeadersError = createAction('leaders/fetchLeadersError');
 
 export const editLeadersAction = createAction('leaders/EditLeaders');
 export const addLeadersAction = createAction('leaders/AddLeaders');
+
+export const addOldLeadersAction = createAction('leaders/addOldLeaders');

@@ -1,3 +1,4 @@
+/* eslint-disable use-isnan */
 import './ListItem.scss';
 import UserImage from '../../assets/images/user.png';
 import PencilImage from '../../assets/images/pencil.png';

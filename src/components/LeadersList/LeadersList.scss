@@ -22,10 +22,17 @@
 
 	&-button__prev-day {
 		@extend %prev-next-buttons;
+		&:disabled {
+			background-color: #b8b8b875;
+		}
 	}
 
 	&-button__next-day {
 		@extend %prev-next-buttons;
+
+		&:disabled {
+			background-color: #b8b8b875;
+		}
 	}
 
 	&-header {

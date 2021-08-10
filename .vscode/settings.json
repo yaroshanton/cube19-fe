@@ -1,3 +1,5 @@
 {
- "cSpell.words": ["Middlewares"]
+	"cSpell.words": ["Middlewares"],
+	"files.autoSave": "onWindowChange",
+	"editor.defaultFormatter": "esbenp.prettier-vscode"
 }
