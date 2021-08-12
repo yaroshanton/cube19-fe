@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 import { getTopScoreLeaders } from '../../redux/leaders/leadersSelectors';
@@ -9,6 +10,9 @@ import leaderImg from '../../assets/images/bg-leadboard.png';
 
 const HighestScorers = () => {
 	const leaders: ILeader[] = useSelector(getTopScoreLeaders);
+	// const allOldLeaders = useSelector(getTopScoreLeaders);
+
+	// console.log(allOldLeaders);
 
 	return (
 		<div className="wrapper">
@@ -16,7 +20,7 @@ const HighestScorers = () => {
 				<h2>All time Highest Scorers</h2>
 				<ul className="highest-scores-list">
 					{leaders.map(leader => (
-						<li key={leader.id} className="highest-scores__item">
+						<li key={uuidv4()} className="highest-scores__item">
 							<img src={profileImg} alt="leader" className="highest-scores__item__img" />
 							<h3>{leader.name}</h3>
 							<p>{leader.score}</p>

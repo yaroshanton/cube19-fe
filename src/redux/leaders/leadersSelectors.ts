@@ -25,4 +25,22 @@ export const sortedAllOldLeaders = (state: StoreType) =>
 		return leaders;
 	});
 
-export const getTopScoreLeaders = (state: StoreType) => sortedAllLeaders(state).slice(0, 4);
+export const getTopScoreLeaders = (state: StoreType) => {
+	const allLeadersHistory = getAllOldLeaders(state)
+		.flat(2)
+		.sort((a, b) => b.score - a.score);
+
+	const uniqNames = [...new Set(allLeadersHistory.map(leader => leader.name))];
+	const test: ILeader[] = [];
+
+	allLeadersHistory.map((leader: ILeader) => {
+		if (uniqNames.includes(leader.name)) {
+			test.push(leader);
+			const nameIndex = uniqNames.indexOf(leader.name);
+			uniqNames.splice(nameIndex, 1);
+		}
+
+		return leader;
+	});
+	return test.slice(0, 4);
+};

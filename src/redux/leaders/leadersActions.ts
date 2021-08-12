@@ -15,9 +15,8 @@ export const fetchLeaders = () => async (dispatch: Dispatch) => {
 	try {
 		const { data } = await axios.get(`${baseUrl}`);
 
-		const leader = data.map((item: ILeader, index: number) => {
+		const leader = data.map((item: ILeader) => {
 			return {
-				id: index,
 				name: item.name,
 				score: item.score ? item.score : 0,
 			};

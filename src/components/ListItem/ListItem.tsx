@@ -1,4 +1,5 @@
 import './ListItem.scss';
+import { v4 as uuidv4 } from 'uuid';
 import UserImage from '../../assets/images/user.png';
 import PencilImage from '../../assets/images/pencil.png';
 
@@ -17,7 +18,7 @@ const ListItem = (props: IListItemProps) => {
 			{leaders &&
 				leaders.map((leader: ILeader) => {
 					return (
-						<li key={leader.id} className="list-item">
+						<li key={uuidv4()} className="list-item">
 							<div className="list-item__place">{leader.position}st</div>
 							<img src={UserImage} alt="user" className="list-item__image" />
 							<div className="list-item__score">{leader.score}</div>
