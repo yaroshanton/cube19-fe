@@ -40,8 +40,18 @@ const LeadersList = () => {
 
 	const handleAddNewDay = () => {
 		dispatch(fetchLeaders());
-		dispatch({ type: [addOldLeadersAction.type], payload: leaders });
-		setHistoryDay(historyDay + 1);
+
+		if (!toggleViewHistory) {
+			dispatch({ type: [addOldLeadersAction.type], payload: leaders });
+		}
+
+		// return what day in count days
+		if (!toggleViewHistory || historyDay < oldLeaders.length) {
+			setHistoryDay(oldLeaders.length);
+		} else {
+			setHistoryDay(historyDay + 1);
+		}
+
 		setToggleViewHistory(false);
 	};
 
@@ -49,6 +59,7 @@ const LeadersList = () => {
 		if (oldLeaders.length === historyDay) {
 			dispatch({ type: [addOldLeadersAction.type], payload: leaders });
 		}
+
 		setHistoryDay(historyDay - 1);
 		setToggleViewHistory(true);
 	};
