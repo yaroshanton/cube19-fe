@@ -4,15 +4,13 @@ import { v4 as uuidv4 } from 'uuid';
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 import { getTopScoreLeaders } from '../../redux/leaders/leadersSelectors';
 
-import './HighestScorers.scss';
 import profileImg from '../../assets/images/profile-img.png';
 import leaderImg from '../../assets/images/bg-leadboard.png';
 
+import './HighestScorers.scss';
+
 const HighestScorers = () => {
 	const leaders: ILeader[] = useSelector(getTopScoreLeaders);
-	// const allOldLeaders = useSelector(getTopScoreLeaders);
-
-	// console.log(allOldLeaders);
 
 	return (
 		<div className="wrapper">

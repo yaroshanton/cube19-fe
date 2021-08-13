@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
-import './LeadersList.scss';
-
-import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
 import ListItem from '../ListItem/ListItem';
 import ModalEditLeaders from '../modalEditLeaders/modalEditLeaders';
 import ModalAddLeaders from '../modalAddLeaders/modalAddLeaders';
 
-import { sortedAllLeaders, sortedAllOldLeaders } from '../../redux/leaders/leadersSelectors';
+import { ILeader } from '../../redux/leaders/interfaces/leder.types';
+import { addOldLeadersAction } from '../../redux/leaders/actionTypes';
 import { fetchLeaders } from '../../redux/leaders/leadersActions';
 import { modalEditLeadersOpenAction, modalAddLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
-import { addOldLeadersAction } from '../../redux/leaders/actionTypes';
 import {
 	modalEditLeadersOpenSelector,
 	modalAddLeadersOpenSelector,
 } from '../../redux/modalLeaders/modalLeadersSelectors';
+import { sortedAllLeaders, sortedAllOldLeaders } from '../../redux/leaders/leadersSelectors';
+
+import './LeadersList.scss';
 
 const LeadersList = () => {
 	const dispatch = useDispatch();
@@ -45,7 +44,6 @@ const LeadersList = () => {
 			dispatch({ type: [addOldLeadersAction.type], payload: leaders });
 		}
 
-		// return what day in count days
 		if (!toggleViewHistory || historyDay < oldLeaders.length) {
 			setHistoryDay(oldLeaders.length);
 		} else {

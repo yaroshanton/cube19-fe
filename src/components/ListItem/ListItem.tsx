@@ -34,8 +34,8 @@ const ListItem = (props: IListItemProps) => {
 							<div
 								className={cn({
 									[listItemStyles.green]: leader.change > 0,
-									[listItemStyles.red]: leader.change < 0,
 									[listItemStyles.yellow]: leader.change === 0,
+									[listItemStyles.red]: leader.change < 0,
 								})}
 							>
 								{leader.change === 0 ? 'No Change' : `${leader.change}point`}

@@ -1,11 +1,11 @@
 import { ILeader } from './interfaces/leder.types';
 import { StoreType } from '../store';
 
-export const getAlLeaders = (state: StoreType) => [...state.leaders];
+export const getAllLeaders = (state: StoreType) => [...state.leaders];
 export const getAllOldLeaders = (state: StoreType) => [...state.oldLeaders];
 
 export const sortedAllLeaders = (state: StoreType) =>
-	getAlLeaders(state)
+	getAllLeaders(state)
 		.sort((a, b) => b.score - a.score)
 		.map((leader, index: number) => {
 			leader = { ...leader, ...{ position: index + 1, change: 0 } };
@@ -31,16 +31,17 @@ export const getTopScoreLeaders = (state: StoreType) => {
 		.sort((a, b) => b.score - a.score);
 
 	const uniqNames = [...new Set(allLeadersHistory.map(leader => leader.name))];
-	const test: ILeader[] = [];
+	const topScoreLeaders: ILeader[] = [];
 
 	allLeadersHistory.map((leader: ILeader) => {
 		if (uniqNames.includes(leader.name)) {
-			test.push(leader);
+			topScoreLeaders.push(leader);
 			const nameIndex = uniqNames.indexOf(leader.name);
 			uniqNames.splice(nameIndex, 1);
 		}
 
 		return leader;
 	});
-	return test.slice(0, 4);
+
+	return topScoreLeaders.slice(0, 4);
 };

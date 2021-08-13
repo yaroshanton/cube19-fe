@@ -1,15 +1,14 @@
 import { Form, Formik } from 'formik';
 
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-
-import './modalAddLeaders.scss';
 
 import { createLeader } from '../../redux/leaders/leadersActions';
 import { modalAddLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
 
 import { IInitialLeader } from '../../redux/leaders/interfaces/leder.types';
+
+import './modalAddLeaders.scss';
 
 const initFormik = { name: '', score: Number('_') };
 
@@ -24,23 +23,10 @@ const ModalAddLeaders = () => {
 		}
 	};
 
-	// Closing modal by Escape
-	useEffect(() => {
-		const handleKeyDown = (e: { code: string }) => {
-			if (e.code === 'Escape') {
-				onToggleModal();
-				window.removeEventListener('keydown', handleKeyDown);
-			}
-		};
-
-		window.addEventListener('keydown', handleKeyDown);
-	}, [onToggleModal]);
-
 	const handleSubmit = (leader: IInitialLeader) => {
 		if (leader.name !== '' && leader.score !== Number('_')) {
 			dispatch(createLeader(leader));
 			onToggleModal();
-			// handleAddOldLeaders();
 		} else {
 			toast.error('🦄 Enter your name and score!', {
 				autoClose: 2000,
