@@ -1,4 +1,4 @@
-import { useEffect, useState, FC, FormEvent } from 'react';
+import { useState, FC, FormEvent } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
@@ -8,11 +8,9 @@ import { editLeadersAction } from '../../redux/leaders/actionTypes';
 import { modalEditLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
 
 import './modalEditLeaders.scss';
-// import { modalEdit } from '../../utils/toast';
 
 interface ModalProps {
 	data: ILeader;
-	// handleAddOldLeaders: () => void;
 }
 
 const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
@@ -26,18 +24,6 @@ const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 			onToggleModal();
 		}
 	};
-	// TODO: Create custom hook for this func modalEdit
-
-	// Closing the modal by Escape
-	useEffect(() => {
-		const handleKeyDown = (e: { code: string }) => {
-			if (e.code === 'Escape') {
-				onToggleModal();
-				window.removeEventListener('keydown', handleKeyDown);
-			}
-		};
-		window.addEventListener('keydown', handleKeyDown);
-	}, [onToggleModal]);
 
 	const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setEditLeaders(state => ({
@@ -52,7 +38,6 @@ const ModalEditLeaders: FC<ModalProps> = ({ data }: ModalProps) => {
 		if (data.score !== editLeaders.score) {
 			dispatch({ type: [editLeadersAction.type], payload: editLeaders });
 			onToggleModal();
-			// handleAddOldLeaders();
 		} else {
 			toast.error('🦄 You made no change!', {
 				autoClose: 2000,

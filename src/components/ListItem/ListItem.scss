@@ -1,5 +1,19 @@
 @import '../../stylesheet/shared.scss';
 
+%list-item {
+	display: flex;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 22px;
+	width: 125px;
+
+	&::before {
+		padding-right: 10px;
+		padding-top: 1px;
+	}
+}
+
 .list-item {
 	display: flex;
 	justify-content: space-between;
@@ -48,51 +62,34 @@
 		color: #1a1c1d;
 		text-transform: capitalize;
 	}
-	&__changes {
-		display: flex;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 22px;
-		color: #ffc658;
-		width: 125px;
 
-		&::before {
-			content: url(../../assets/images/ArrowYellow.png);
-			padding-right: 10px;
-			padding-top: 1px;
-		}
-	}
-
-	&__up {
-		display: flex;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 22px;
+	&__green {
 		color: #81c926;
+		@extend %list-item;
 
 		&::before {
 			content: url(../../assets/images/arrow-green-up.png);
-			padding-right: 10px;
-			padding-top: 1px;
 		}
 	}
 
-	&__down {
-		display: flex;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 22px;
+	&__yellow {
+		color: #ffc658;
+		@extend %list-item;
+
+		&::before {
+			content: url(../../assets/images/ArrowYellow.png);
+		}
+	}
+
+	&__red {
 		color: #ff5858;
+		@extend %list-item;
 
 		&::before {
 			content: url(../../assets/images/arrow-red-down.png);
-			padding-right: 10px;
-			padding-top: 1px;
 		}
 	}
+
 	&__edit {
 		width: 18px;
 		height: 18px;
