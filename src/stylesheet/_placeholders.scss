@@ -1,0 +1,12 @@
+%prev-next-buttons {
+	border: 1px solid #000;
+	width: 100px;
+	height: 40px;
+	border-radius: 6px;
+
+	&:hover {
+		background-color: $button-primary-color;
+		color: #fff;
+		border-color: transparent;
+	}
+}

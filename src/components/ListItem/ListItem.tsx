@@ -1,33 +1,24 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import cn from 'classnames';
+import { v4 as uuidv4 } from 'uuid';
 import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
-import ModalEditLeaders from '../modalEditLeaders';
-
-import leadersSelectors from '../../redux/leaders/leadersSelectors';
-import { modalEditLeadersOpenAction } from '../../redux/modalEditLeaders/modalEditLeadersActions';
-import { modalEditLeadersOpenSelector } from '../../redux/modalEditLeaders/modalEditLeadersSelectors';
-
-import UserImage from '../../images/user.png';
-import PencilImage from '../../images/pencil.png';
+import UserImage from '../../assets/images/user.png';
+import PencilImage from '../../assets/images/pencil.png';
 
 import './ListItem.scss';
 
-const ListItem = () => {
-	const dispatch = useDispatch();
+interface IListItemProps {
+	leaders: ILeader[];
+	updateOneLeader: (param: ILeader) => void;
+}
 
-	const [oneLeader, setOneLeader] = useState<ILeader>({ name: '', score: 0, id: 0, position: 0 });
-	const leaders = useSelector(leadersSelectors.sortedAllLeaders);
+const ListItem = (props: IListItemProps) => {
+	const { leaders, updateOneLeader } = props;
 
-	const isModalEditLeadersOpen = useSelector(state => modalEditLeadersOpenSelector(state));
-	const onToggleModal = () => dispatch(modalEditLeadersOpenAction());
-
-	const handleClick = (leader: ILeader) => {
-		onToggleModal();
-		setOneLeader(leader);
+	const listItemStyles = {
+		green: 'list-item__green',
+		yellow: 'list-item__yellow',
+		red: 'list-item__red',
 	};
 
 	return (
@@ -35,22 +26,32 @@ const ListItem = () => {
 			{leaders &&
 				leaders.map((leader: ILeader) => {
 					return (
-						<li key={leader.id} className="list-item">
+						<li key={uuidv4()} className="list-item">
 							<div className="list-item__place">{leader.position}st</div>
 							<img src={UserImage} alt="user" className="list-item__image" />
 							<div className="list-item__score">{leader.score}</div>
 							<div className="list-item__name ">{leader.name}</div>
-							<div className="list-item__changes">No change</div>
-							<img
-								src={PencilImage}
-								alt="pencil"
+							<div
+								className={cn({
+									[listItemStyles.green]: leader.change > 0,
+									[listItemStyles.yellow]: leader.change === 0,
+									[listItemStyles.red]: leader.change < 0,
+								})}
+							>
+								{leader.change === 0 ? 'No Change' : `${leader.change}point`}
+							</div>
+							<div
 								className="list-item__edit cursor-pointer"
-								onClick={() => handleClick(leader)}
-							/>
+								onClick={() => updateOneLeader(leader)}
+								onKeyDown={() => updateOneLeader}
+								role="button"
+								tabIndex={0}
+							>
+								<img src={PencilImage} alt="pencil" />
+							</div>
 						</li>
 					);
 				})}
-			{isModalEditLeadersOpen && <ModalEditLeaders data={oneLeader} />}
 		</div>
 	);
 };

@@ -1,22 +1,30 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import operations from './redux/leaders/leadersOperations';
-import Container from './components/Container';
-import Title from './components/Title';
-import HighestScorers from './components/HighestScorers';
-import LeadersTable from './components/LeadersTable';
+
+import { ToastContainer } from 'react-toastify';
+
+import { fetchLeaders } from './redux/leaders/leadersActions';
+
+import Container from './components/Container/Container';
+import Title from './components/Title/Title';
+import HighestScorers from './components/HighestScorers/HighestScorers';
+import LeadersList from './components/LeadersList/LeadersList';
 
 function App() {
-	const dispatch: any = useDispatch();
-	useEffect(() => dispatch(operations.fetchLeaders()), [dispatch]);
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(fetchLeaders());
+	}, []);
 
 	return (
 		<>
 			<Container>
 				<Title />
 				<HighestScorers />
-				<LeadersTable />
+				<LeadersList />
 			</Container>
+			<ToastContainer />
 		</>
 	);
 }

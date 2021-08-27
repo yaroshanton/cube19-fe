@@ -9,10 +9,11 @@
 	background-color: #6b59cc;
 	border-radius: 10px;
 	margin-bottom: 37px;
+	width: 984px;
 
 	.highest-scores {
 		h2 {
-			font-family: 'Gilroy', sans-serif;
+			font-family: $font-family-gilroy;
 			font-weight: 600;
 			font-size: 20px;
 			color: #fff;
@@ -28,7 +29,7 @@
 				position: relative;
 
 				h3 {
-					font-family: 'Lato', sans-serif;
+					font-family: $font-family-lato;
 					font-weight: 400;
 					font-size: 12px;
 					color: #fff;
@@ -36,7 +37,7 @@
 					text-align: center;
 				}
 
-				img {
+				&__img {
 					width: 84px;
 					margin-bottom: 10px;
 				}

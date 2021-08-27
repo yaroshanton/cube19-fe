@@ -1,3 +1,19 @@
+@import '../../stylesheet/shared.scss';
+
+%list-item {
+	display: flex;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 22px;
+	width: 125px;
+
+	&::before {
+		padding-right: 10px;
+		padding-top: 1px;
+	}
+}
+
 .list-item {
 	display: flex;
 	justify-content: space-between;
@@ -10,7 +26,7 @@
 	&__place {
 		width: 22px;
 		height: 21px;
-		font-family: Gilroy;
+		font-family: $font-family-gilroy;
 		font-style: normal;
 		font-weight: bold;
 		font-size: 20px;
@@ -26,7 +42,7 @@
 	&__score {
 		width: 44px;
 		height: 21px;
-		font-family: 'Gilroy';
+		font-family: $font-family-gilroy;
 		font-style: normal;
 		font-weight: bold;
 		font-size: 30px;
@@ -35,7 +51,7 @@
 		opacity: 0.91;
 	}
 	&__name {
-		font-family: 'Lato', sans-serif;
+		font-family: $font-family-lato;
 		width: 246px;
 		height: 23px;
 
@@ -46,50 +62,34 @@
 		color: #1a1c1d;
 		text-transform: capitalize;
 	}
-	&__changes {
-		display: flex;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 22px;
-		color: #ffc658;
 
-		&::before {
-			content: url(../../images/ArrowYellow.png);
-			padding-right: 10px;
-			padding-top: 1px;
-		}
-	}
-
-	&__up {
-		display: flex;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 22px;
+	&__green {
 		color: #81c926;
+		@extend %list-item;
 
 		&::before {
-			content: url(../../images/arrow-green-up.png);
-			padding-right: 10px;
-			padding-top: 1px;
+			content: url(../../assets/images/arrow-green-up.png);
 		}
 	}
 
-	&__down {
-		display: flex;
-		font-style: normal;
-		font-weight: normal;
-		font-size: 14px;
-		line-height: 22px;
+	&__yellow {
+		color: #ffc658;
+		@extend %list-item;
+
+		&::before {
+			content: url(../../assets/images/ArrowYellow.png);
+		}
+	}
+
+	&__red {
 		color: #ff5858;
+		@extend %list-item;
 
 		&::before {
-			content: url(../../images/arrow-red-down.png);
-			padding-right: 10px;
-			padding-top: 1px;
+			content: url(../../assets/images/arrow-red-down.png);
 		}
 	}
+
 	&__edit {
 		width: 18px;
 		height: 18px;

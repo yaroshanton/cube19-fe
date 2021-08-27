@@ -1,54 +1,60 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-
 import { Form, Formik } from 'formik';
-import React, { useEffect } from 'react';
+
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+
+import { createLeader } from '../../redux/leaders/leadersActions';
+import { modalAddLeadersOpenAction } from '../../redux/modalLeaders/modalLeadersActions';
+
+import { IInitialLeader } from '../../redux/leaders/interfaces/leder.types';
+
 import './modalAddLeaders.scss';
-import operations from '../../redux/leaders/leadersOperations';
-import { modalAddLeadersOpenAction } from '../../redux/modalAddLeaders/modalAddLeadersActions';
-import { ILeader } from '../../redux/leaders/interfaces/leder.types';
 
-const initFormik = { name: '', score: 0 };
+const initFormik = { name: '', score: Number('_') };
 
-const ModalAddLeaders: React.FC = () => {
-	const dispatch: any = useDispatch();
-	const onToggleModal: any = () => dispatch(modalAddLeadersOpenAction());
+const ModalAddLeaders = () => {
+	const dispatch = useDispatch();
+	const onToggleModal = () => dispatch(modalAddLeadersOpenAction());
 
-	// Закрытие модалки по клику Backdrop
-	const handleBackdropClick = (event: { currentTarget: any; target: any }): void => {
+	// Closing modal by Backdrop
+	const handleBackdropClick = (event: React.FormEvent<EventTarget>): void => {
 		if (event.currentTarget === event.target) {
 			onToggleModal();
 		}
 	};
 
-	// Закрытие модалки по Escape
-	useEffect(() => {
-		const handleKeyDown = (e: { code: string }) => {
-			if (e.code === 'Escape') {
-				onToggleModal();
-				window.removeEventListener('keydown', handleKeyDown);
-			}
-		};
-
-		window.addEventListener('keydown', handleKeyDown);
-	}, [onToggleModal]);
-
-	const handleSubmit = (leader: ILeader) => {
-		dispatch(operations.createLeader(leader));
-		onToggleModal();
+	const handleSubmit = (leader: IInitialLeader) => {
+		if (leader.name !== '' && leader.score !== Number('_')) {
+			dispatch(createLeader(leader));
+			onToggleModal();
+		} else {
+			toast.error('🦄 Enter your name and score!', {
+				autoClose: 2000,
+			});
+		}
 	};
 
 	return (
-		// eslint-disable-next-line jsx-a11y/click-events-have-key-events
-		<div className="modal-backdrop" onClick={handleBackdropClick}>
+		<div
+			role="button"
+			tabIndex={0}
+			className="modal-backdrop"
+			onClick={handleBackdropClick}
+			onKeyDown={handleBackdropClick}
+		>
 			<div className="wrapper-modal">
 				<div className="modal">
-					<div className="modal__close" onClick={onToggleModal}>
+					<div
+						role="button"
+						tabIndex={0}
+						className="modal__close"
+						onClick={onToggleModal}
+						onKeyDown={onToggleModal}
+					>
 						x
 					</div>
 					<Formik initialValues={initFormik} onSubmit={leader => handleSubmit(leader)}>
-						{({ values, handleChange, handleBlur, isSubmitting }) => (
+						{({ values, handleChange, handleBlur }) => (
 							<Form className="modal__form">
 								<h1 className="modal__form__text">Add user score</h1>
 								<input
@@ -69,7 +75,7 @@ const ModalAddLeaders: React.FC = () => {
 									onBlur={handleBlur}
 									value={values.score}
 								/>
-								<button type="submit" disabled={isSubmitting} className="modal__form__button">
+								<button type="submit" className="modal__form__button">
 									Save
 								</button>
 							</Form>

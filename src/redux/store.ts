@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 
 // Reducers
-import { leaders } from './leaders/leadersReducer';
-import { isModalEditLeadersOpen } from './modalEditLeaders/modalEditLeadersReducer';
-import { isModalAddLeadersOpen } from './modalAddLeaders/modalAddLeadersReducer';
+import { leaders, oldLeaders } from './leaders/leadersReducer';
+import { isModalEditLeadersOpen, isModalAddLeadersOpen } from './modalLeaders/modalLeadersReducer';
 
 const store = configureStore({
 	reducer: {
 		leaders,
+		oldLeaders,
 		isModalEditLeadersOpen,
 		isModalAddLeadersOpen,
 	},
