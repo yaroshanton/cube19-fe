@@ -20,7 +20,7 @@ import './LeadersList.scss';
 const LeadersList = () => {
 	const dispatch = useDispatch();
 
-	const [oneLeader, setOneLeader] = useState<ILeader>({ name: '', score: 0, id: 0, position: 0, change: 0 });
+	const [oneLeader, setOneLeader] = useState<ILeader>({ name: '', score: 0, position: 0, change: 0 });
 	const [toggleViewHistory, setToggleViewHistory] = useState(false);
 	const [historyDay, setHistoryDay] = useState(0);
 
